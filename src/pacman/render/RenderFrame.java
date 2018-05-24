@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
+
+import pacman.game.InstanceManager;
 import pacman.utils.*;
 
 import static java.lang.Thread.sleep;
@@ -15,6 +17,9 @@ public class RenderFrame extends JFrame implements Runnable {
     private Thread gameThread;
     private FrameRate frameRate;
     private BufferStrategy bufferStrategy;
+
+    private InstanceManager instanceManager;
+    private RenderManager renderManager;
 
     // CONSTS ------------------------ //
     public static int WIDTH = 320;
@@ -30,7 +35,12 @@ public class RenderFrame extends JFrame implements Runnable {
     }
 
     // METHODS ----------------------- //
-    public void create() {
+    public void create(InstanceManager instanceManager, RenderManager renderManager) {
+
+        // MANAGER INITIALIZATION //
+        this.instanceManager = instanceManager;
+        this.renderManager = renderManager;
+
         // CANVAS INITIALIZATION //
         Canvas canvas = new Canvas();
         canvas.setSize(WIDTH, HEIGHT);
@@ -60,6 +70,7 @@ public class RenderFrame extends JFrame implements Runnable {
         running = true;
         frameRate.initialize();
         while (running) {
+            System.err.println("running");
             // render things
             gameLoop();
         }
@@ -103,9 +114,10 @@ public class RenderFrame extends JFrame implements Runnable {
     private void render(Graphics graphics) {
         frameRate.calculate();
         // draw graphics
+        renderManager.renderInstances(instanceManager, graphics);
     }
 
-    protected void onWindowClosing() {
+    public void onWindowClosing() {
         try {
             System.err.println("Stopping Thread...");
             running = false;

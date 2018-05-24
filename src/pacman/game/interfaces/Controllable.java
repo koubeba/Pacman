@@ -1,4 +1,4 @@
 package pacman.game.interfaces;
 
-public interface Controllable {
+public interface Controllable extends Damageable {
 }

@@ -2,14 +2,20 @@ package pacman.render.graphics;
 
 import pacman.manager.file.FileManager;
 
-public class MovableSpriteGraphics extends SpriteGraphic {
+public class MovableSpriteGraphic extends SpriteGraphic {
+
+    // FIELDS ------------------------------ //
+
+    protected MovableAnimation animation;
 
     // CONSTRUCTORS ------------------------ //
 
-    public MovableSpriteGraphics(String name, int x_position, int y_position) {
+    public MovableSpriteGraphic(String name, int x_position, int y_position) {
+        super(name, x_position, y_position);
+    }
 
-        this.name = name;
-
+    @Override
+    protected void initAnimation() {
         // INITIALIZE ANIMATION //
         this.animation = new MovableAnimation();
 
@@ -17,11 +23,6 @@ public class MovableSpriteGraphics extends SpriteGraphic {
             // TODO: dodac wyjatki
             this.animation.AddAnimationState(state, fileManager.readImage(name, state));
         }
-
-        this.x_position = x_position;
-
-        this.y_position = y_position;
-
     }
 
 }

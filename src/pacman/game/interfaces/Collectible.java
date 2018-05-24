@@ -1,4 +1,4 @@
 package pacman.game.interfaces;
 
-public interface Collectible {
+public interface Collectible extends SolidObject {
 }

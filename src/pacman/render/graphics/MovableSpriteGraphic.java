@@ -21,7 +21,7 @@ public class MovableSpriteGraphic extends SpriteGraphic {
 
         for (String state : animation.STATES) {
             // TODO: dodac wyjatki
-            this.animation.AddAnimationState(state, fileManager.readImage(name, state));
+            this.animation.AddAnimationState(state, fileManager.readImage(name, state), 1);
         }
     }
 

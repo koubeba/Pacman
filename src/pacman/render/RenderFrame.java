@@ -70,7 +70,6 @@ public class RenderFrame extends JFrame implements Runnable {
         running = true;
         frameRate.initialize();
         while (running) {
-            System.err.println("running");
             // render things
             gameLoop();
         }

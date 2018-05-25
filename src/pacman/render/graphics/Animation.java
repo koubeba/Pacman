@@ -20,12 +20,14 @@ public class Animation {
 
     public Animation() {
         this.images = new HashMap<String, Image>();
+        currentState = STATES[0];
+        animationState = ANIMATION_STATES[0];
     }
 
     // METHODS --------------------------------- //
 
-    public void AddAnimationState(String name, Image image) {
-        this.images.put(name, image);
+    public void AddAnimationState(String name, Image image, int i) {
+        this.images.put(name + "_" + i, image);
     }
 
     public void animate() {

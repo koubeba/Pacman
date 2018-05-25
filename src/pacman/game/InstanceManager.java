@@ -15,16 +15,23 @@ import java.awt.*;
 public class InstanceManager {
 
     // FIELDS ----------------------- //
-    SolidObject testSolidObject;
+    Movable testSolidObject;
+
+    // TODO: add player
 
     // CONSTRUCTORS ----------------- //
 
     public InstanceManager() {
-        this.testSolidObject = new SolidObject("test");
+        this.testSolidObject = new Movable("test", 0, 0, 1);
     }
 
     public void renderAll(Graphics g) {
         this.testSolidObject.render(g);
+    }
+
+    public void receiveInput(MOVEMENT_INPUT input) {
+        //System.err.println(input);
+        testSolidObject.move(input);
     }
 
 }

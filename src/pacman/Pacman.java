@@ -2,6 +2,7 @@ package pacman;
 
 import pacman.game.GameManager;
 import pacman.game.InstanceManager;
+import pacman.input.InputManager;
 import pacman.render.RenderFrame;
 import pacman.render.RenderManager;
 
@@ -15,6 +16,7 @@ public class Pacman {
 
     private final InstanceManager instanceManager;
     private final RenderManager renderManager;
+    private final InputManager inputManager;
 
     private final GameManager gameManager;
 
@@ -24,6 +26,7 @@ public class Pacman {
 
         instanceManager = new InstanceManager();
         renderManager = new RenderManager();
+        inputManager = new InputManager(instanceManager);
 
         gameManager = new GameManager(instanceManager, renderManager);
     }
@@ -32,7 +35,9 @@ public class Pacman {
         Pacman pacman = new Pacman();
         pacman.renderFrame.initRun();
 
+        // ADDING LISTENERS //
 
+        pacman.renderFrame.addKeyListener(pacman.inputManager.keyboardInput);
 
         pacman.renderFrame.addWindowListener(new WindowAdapter() {
             @Override
@@ -41,9 +46,12 @@ public class Pacman {
             }
         });
 
+        // RUN THREADS //
+
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                pacman.inputManager.create();
                 pacman.renderFrame.create(pacman.instanceManager, pacman.renderManager);
             }
         });

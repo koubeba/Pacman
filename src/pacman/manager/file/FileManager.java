@@ -21,7 +21,6 @@ public class FileManager {
         BufferedImage bufferedImage = null;
 
         try {
-            System.err.println(GetImageUrl(spriteName, stateName));
             bufferedImage = ImageIO.read(new File(GetImageUrl(spriteName, stateName)));
         } catch (IOException ex) {
             // do sth....

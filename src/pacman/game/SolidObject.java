@@ -29,6 +29,7 @@ public class SolidObject implements pacman.game.interfaces.SolidObject {
 
     @Override
     public void render(Graphics g) {
+        this.spriteGraphic.setPosition(this.x_position, this.y_position);
         this.spriteGraphic.render(g);
     }
 

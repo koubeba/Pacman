@@ -1,5 +1,7 @@
 package pacman.manager.file;
 
+import pacman.game.InstanceManager;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,17 +13,17 @@ public class FileManager {
     // CONSTANTS --------------------------- //
 
     private final static String IMG_FILES_PATH = "/home/maja/Pulpit/PACMAAAN/src/pacman/manager/file/";
-    private final static String IMG_FORMAT = "jpg";
+    private final static String IMG_FORMAT = "gif";
 
     // METHODS -------------------- //
 
     // read image for a sprite and animationState
-    public Image readImage(String spriteName, String stateName) {
+    public Image readImage(String spriteName, String stateName, Integer animationState) {
 
         BufferedImage bufferedImage = null;
 
         try {
-            bufferedImage = ImageIO.read(new File(GetImageUrl(spriteName, stateName)));
+            bufferedImage = ImageIO.read(new File(GetImageUrl(spriteName, stateName, animationState)));
         } catch (IOException ex) {
             // do sth....
             ex.printStackTrace();
@@ -32,9 +34,9 @@ public class FileManager {
 
     }
 
-    private String GetImageUrl(String spriteName, String stateName) {
-        return IMG_FILES_PATH.equals("") ? "/" + spriteName + "_" + stateName + "." + IMG_FORMAT :
-                IMG_FILES_PATH + "/" + spriteName + "_" + stateName + "." + IMG_FORMAT;
+    private String GetImageUrl(String spriteName, String stateName, Integer animationState) {
+        return IMG_FILES_PATH.equals("") ? "/" + spriteName + "_" + stateName + "_" + animationState + "." + IMG_FORMAT :
+                IMG_FILES_PATH + spriteName + "_" + stateName + "_" + animationState + "." + IMG_FORMAT;
     }
 
 }

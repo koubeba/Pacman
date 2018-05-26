@@ -2,6 +2,8 @@ package pacman.render.graphics;
 
 import pacman.manager.file.FileManager;
 
+import java.awt.*;
+
 public class MovableSpriteGraphic extends SpriteGraphic {
 
     // FIELDS ------------------------------ //
@@ -21,8 +23,16 @@ public class MovableSpriteGraphic extends SpriteGraphic {
 
         for (String state : animation.STATES) {
             // TODO: dodac wyjatki
-            this.animation.AddAnimationState(state, fileManager.readImage(name, state), 1);
+            for (Integer animationState: animation.ANIMATION_STATES) {
+                System.err.println("Adding animation " + state + " " + animationState);
+                this.animation.AddAnimationState(state, fileManager.readImage(name, state, animationState), animationState);
+            }
+
         }
+    }
+
+    public void render(Graphics g) {
+        g.drawImage(this.animation.getCurrentImage(), x_position, y_position, null);
     }
 
 }

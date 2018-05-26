@@ -52,7 +52,9 @@ public class SpriteGraphic {
 
         for (String state : animation.STATES) {
             // TODO: dodac wyjatki
-            this.animation.AddAnimationState(state, this.fileManager.readImage(name, state), 1);
+            for (Integer animationState : animation.ANIMATION_STATES) {
+                this.animation.AddAnimationState(state, this.fileManager.readImage(name, state, animationState), animationState);
+            }
         }
     }
 

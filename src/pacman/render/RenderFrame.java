@@ -61,6 +61,9 @@ public class RenderFrame extends JFrame implements Runnable {
         canvas.createBufferStrategy(BUFFER_INT);
         bufferStrategy = canvas.getBufferStrategy();
 
+        canvas.setFocusable(true);
+        canvas.requestFocus();
+
         // Start the game thread
         gameThread = new Thread(this);
         gameThread.start();
@@ -70,6 +73,7 @@ public class RenderFrame extends JFrame implements Runnable {
         running = true;
         frameRate.initialize();
         while (running) {
+            this.requestFocus();
             // render things
             gameLoop();
         }

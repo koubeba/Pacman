@@ -3,6 +3,7 @@ package pacman.input;
 import pacman.game.InstanceManager;
 import pacman.game.MOVEMENT_INPUT;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -30,9 +31,6 @@ public class InputManager implements Runnable {
     // METHODS ------------------------------------------- //
 
     public void create() {
-
-
-
         // INIT THREAD //
         this.thread = new Thread(this);
         this.thread.start();
@@ -40,7 +38,6 @@ public class InputManager implements Runnable {
 
     @Override
     public void run() {
-
         this.running = true;
         while (running) {
             this.loop();

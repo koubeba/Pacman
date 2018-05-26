@@ -53,6 +53,7 @@ public class Pacman {
             public void run() {
                 pacman.inputManager.create();
                 pacman.renderFrame.create(pacman.instanceManager, pacman.renderManager);
+
             }
         });
     }

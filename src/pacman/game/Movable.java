@@ -18,12 +18,13 @@ public class Movable extends SolidObject implements pacman.game.interfaces.Movab
     public void move(MOVEMENT_INPUT direction, double delta) {
         switch (direction) {
             case UP:
-                // TODO: add time.delta
-                this.y_position += speed * delta;
+                this.y_position -= speed * delta;
                 break;
             case DOWN:
+                this.y_position += speed * delta;
                 break;
             case LEFT:
+                this.x_position -= speed * delta;
                 break;
             case RIGHT:
                 this.x_position += speed * delta;

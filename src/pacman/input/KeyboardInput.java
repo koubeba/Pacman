@@ -38,14 +38,14 @@ public class KeyboardInput implements KeyListener {
     public synchronized void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if( keyCode >= 0 && keyCode < keys.length ) {
-            keys[ keyCode ] = true;
+            keys[keyCode] = true;
         }
     }
 
     public synchronized void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if( keyCode >= 0 && keyCode < keys.length ) {
-            keys[ keyCode ] = false;
+            keys[keyCode] = false;
         }
     }
 

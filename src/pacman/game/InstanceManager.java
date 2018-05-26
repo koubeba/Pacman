@@ -30,7 +30,6 @@ public class InstanceManager {
     }
 
     public void receiveInput(MOVEMENT_INPUT input, double delta) {
-        //System.err.println(input);
         testSolidObject.move(input, delta);
     }
 

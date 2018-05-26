@@ -57,6 +57,15 @@ public class InputManager implements Runnable {
         if (keyboardInput.keyDown(KeyEvent.VK_D)) {
             instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT, delta);
         }
+        if (keyboardInput.keyDown(KeyEvent.VK_A)) {
+            instanceManager.receiveInput(MOVEMENT_INPUT.LEFT, delta);
+        }
+        if (keyboardInput.keyDown(KeyEvent.VK_W)) {
+            instanceManager.receiveInput(MOVEMENT_INPUT.UP, delta);
+        }
+        if (keyboardInput.keyDown(KeyEvent.VK_S)) {
+            instanceManager.receiveInput(MOVEMENT_INPUT.DOWN, delta);
+        }
         try {
             Thread.sleep( 10 );
         } catch( InterruptedException ex ) { }

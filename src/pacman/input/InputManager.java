@@ -48,8 +48,12 @@ public class InputManager implements Runnable {
     }
 
     private void loop() {
+        keyboardInput.poll();
         if (keyboardInput.keyDown(KeyEvent.VK_D)) {
             instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT);
         }
+        try {
+            Thread.sleep( 10 );
+        } catch( InterruptedException ex ) { }
     }
 }

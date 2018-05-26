@@ -3,6 +3,7 @@ package pacman.input;
 import pacman.game.InstanceManager;
 import pacman.game.MOVEMENT_INPUT;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
@@ -19,6 +20,10 @@ public class InputManager implements Runnable {
     public KeyboardInput keyboardInput;
 
     private InstanceManager instanceManager;
+
+    private long curTime = System.nanoTime();
+    private long lastTime = curTime;
+    private double nsPerSeconds;
 
     // CONSTRUCTORS ------------------------------------- //
 
@@ -40,14 +45,17 @@ public class InputManager implements Runnable {
     public void run() {
         this.running = true;
         while (running) {
-            this.loop();
+            curTime = System.nanoTime();
+            nsPerSeconds = curTime - lastTime;
+            this.loop(nsPerSeconds / 1.0E9);
+            lastTime = curTime;
         }
     }
 
-    private void loop() {
+    private void loop(double delta) {
         keyboardInput.poll();
         if (keyboardInput.keyDown(KeyEvent.VK_D)) {
-            instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT);
+            instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT, delta);
         }
         try {
             Thread.sleep( 10 );

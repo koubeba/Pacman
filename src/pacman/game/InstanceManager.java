@@ -22,16 +22,16 @@ public class InstanceManager {
     // CONSTRUCTORS ----------------- //
 
     public InstanceManager() {
-        this.testSolidObject = new Movable("test", 0, 0, 1);
+        this.testSolidObject = new Movable("test", 0, 0, 100);
     }
 
     public void renderAll(Graphics g) {
         this.testSolidObject.render(g);
     }
 
-    public void receiveInput(MOVEMENT_INPUT input) {
+    public void receiveInput(MOVEMENT_INPUT input, double delta) {
         //System.err.println(input);
-        testSolidObject.move(input);
+        testSolidObject.move(input, delta);
     }
 
 }

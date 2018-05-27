@@ -10,6 +10,8 @@ public class SolidObject implements pacman.game.interfaces.SolidObject {
     protected SpriteGraphic spriteGraphic;
     public final String name;
 
+    protected boolean active = true;
+
     // TODO: change it in a vector?
     protected int x_position, y_position;
 
@@ -34,7 +36,36 @@ public class SolidObject implements pacman.game.interfaces.SolidObject {
     }
 
     @Override
-    public void onCollision() {
+    public void checkCollision(SolidObject collider) {
+        // do nothing
+    }
 
+    public boolean intersects(SolidObject object) {
+        boolean x, y;
+
+        if (this.x_position < object.x_position) {
+            x = object.x_position - this.x_position <= this.spriteGraphic.getImgWidth();
+        } else {
+            x = this.x_position - object.x_position <= object.spriteGraphic.getImgWidth();
+        }
+        if (this.y_position < object.y_position) {
+            y = object.y_position - this.y_position <= this.spriteGraphic.getImgHeight();
+        } else {
+            y = this.y_position - object.y_position <= object.spriteGraphic.getImgHeight();
+        }
+
+        return x && y;
+
+    }
+
+    public void die() {
+        this.active = false;
+    }
+
+    // GETTERS AND SETTERS ------------------------------ //
+
+
+    public boolean isActive() {
+        return active;
     }
 }

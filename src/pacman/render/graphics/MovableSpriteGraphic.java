@@ -24,11 +24,13 @@ public class MovableSpriteGraphic extends SpriteGraphic {
         for (String state : animation.STATES) {
             // TODO: dodac wyjatki
             for (Integer animationState: animation.ANIMATION_STATES) {
-                System.err.println("Adding animation " + state + " " + animationState);
                 this.animation.AddAnimationState(state, fileManager.readImage(name, state, animationState), animationState);
             }
 
         }
+
+        this.imgHeight = animation.getCurrentImage().getHeight(null);
+        this.imgWidth = animation.getCurrentImage().getWidth(null);
     }
 
     public void render(Graphics g) {

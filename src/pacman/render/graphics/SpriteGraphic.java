@@ -24,6 +24,9 @@ public class SpriteGraphic {
     protected int x_position;
     protected int y_position;
 
+    protected int imgWidth = 0;
+    protected int imgHeight = 0;
+
     // CONSTANTS --------------------------- //
 
 
@@ -56,6 +59,10 @@ public class SpriteGraphic {
                 this.animation.AddAnimationState(state, this.fileManager.readImage(name, state, animationState), animationState);
             }
         }
+
+        this.imgHeight = animation.getCurrentImage().getHeight(null);
+        this.imgWidth = animation.getCurrentImage().getWidth(null);
+
     }
 
     // METHODS ----------------------------- //
@@ -67,6 +74,16 @@ public class SpriteGraphic {
 
     public void render(Graphics g) {
         g.drawImage(this.animation.getCurrentImage(), x_position, y_position, null);
+    }
+
+    public double getImgWidth() {
+        //return this.animation.getCurrentImage().getWidth(null);
+        return this.imgWidth;
+    }
+
+    public double getImgHeight() {
+        //return this.animation.getCurrentImage().getHeight(null);
+        return this.imgHeight;
     }
 
 }

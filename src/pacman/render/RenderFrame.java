@@ -100,6 +100,8 @@ public class RenderFrame extends JFrame implements Runnable {
                     // Clear the frame
                     g.clearRect(0, 0, getWidth(), getHeight());
 
+                    instanceManager.checkAllCollisions();
+
                     // Render all graphics on the buffer
                     render(g);
                 } finally {

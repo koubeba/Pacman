@@ -5,11 +5,8 @@ import pacman.input.InputManager;
 import pacman.render.RenderManager;
 
 import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class GameManager implements Runnable {
-    // there should be shit like current level, state, points
 
     // FIELDS --------------------------------------- //
 
@@ -39,7 +36,6 @@ public class GameManager implements Runnable {
     }
 
     private void loop() {
-
         switch(gameState) {
             case NORMAL:
             case POWERUP:
@@ -52,8 +48,6 @@ public class GameManager implements Runnable {
             case END:
                 break;
         }
-
-
     }
 
     // RUNNABLE ------------------------------------- //

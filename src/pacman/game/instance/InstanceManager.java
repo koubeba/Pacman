@@ -19,7 +19,7 @@ public class InstanceManager {
     // FIELDS ----------------------- //
 
     private Player testSolidObject;
-    private Ghost Clyde;
+    //private Ghost Clyde;
 
     private final GameManager gameManager;
 
@@ -31,19 +31,15 @@ public class InstanceManager {
 
     public InstanceManager(GameManager gameManager) {
         this.testSolidObject = new Player("test", 0, 0, 100, gameManager);
-        this.Clyde = new Ghost("Clyde", 100, 100, 100);
 
         this.gameManager = gameManager;
     }
 
     public void checkAllCollisions() {
-        this.testSolidObject.checkCollision(this.Clyde);
     }
 
     public void renderAll(Graphics g) {
-        //removeAllInactive();
         if (testSolidObject != null) this.testSolidObject.render(g);
-        if (this.Clyde != null) this.Clyde.render(g);
     }
 
     public void moveAll(double delta) {

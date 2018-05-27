@@ -1,7 +1,5 @@
 package pacman.render.graphics;
 
-import pacman.manager.file.FileManager;
-
 import java.awt.*;
 
 public class MovableSpriteGraphic extends SpriteGraphic {

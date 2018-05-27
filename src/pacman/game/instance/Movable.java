@@ -1,11 +1,8 @@
-package pacman.game;
+package pacman.game.instance;
 
 import pacman.render.graphics.MovableSpriteGraphic;
-import pacman.render.graphics.SpriteGraphic;
 
-import java.awt.*;
-
-public class Movable extends SolidObject implements pacman.game.interfaces.Movable {
+public class Movable extends SolidObject implements pacman.game.instance.interfaces.Movable {
 
     // FIELDS -------------- //
 
@@ -21,24 +18,6 @@ public class Movable extends SolidObject implements pacman.game.interfaces.Movab
     }
 
     // METHODS ------------- //
-    /*
-    public void move(MOVEMENT_INPUT direction, double delta) {
-        switch (direction) {
-            case UP:
-                this.y_position -= speed * delta;
-                break;
-            case DOWN:
-                this.y_position += speed * delta;
-                break;
-            case LEFT:
-                this.x_position -= speed * delta;
-                break;
-            case RIGHT:
-                this.x_position += speed * delta;
-                break;
-        }
-    }
-    */
 
     public void move(double delta) {
         switch (direction) {

@@ -5,7 +5,8 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
 
-import pacman.game.InstanceManager;
+import pacman.game.GameManager;
+import pacman.game.instance.InstanceManager;
 import pacman.utils.*;
 
 import static java.lang.Thread.sleep;
@@ -21,6 +22,8 @@ public class RenderFrame extends JFrame implements Runnable {
     private InstanceManager instanceManager;
     private RenderManager renderManager;
 
+    private GameManager gameManager;
+
     // CONSTS ------------------------ //
     private static int WIDTH = 400;
     private static int HEIGHT = 400;
@@ -35,11 +38,13 @@ public class RenderFrame extends JFrame implements Runnable {
     }
 
     // METHODS ----------------------- //
-    public void create(InstanceManager instanceManager, RenderManager renderManager) {
+
+    public void create(InstanceManager instanceManager, RenderManager renderManager, GameManager gameManager) {
 
         // MANAGER INITIALIZATION //
         this.instanceManager = instanceManager;
         this.renderManager = renderManager;
+        this.gameManager = gameManager;
 
         // CANVAS INITIALIZATION //
         Canvas canvas = new Canvas();
@@ -100,7 +105,10 @@ public class RenderFrame extends JFrame implements Runnable {
                     // Clear the frame
                     g.clearRect(0, 0, getWidth(), getHeight());
 
-                    instanceManager.checkAllCollisions();
+                    //instanceManager.checkAllCollisions();
+
+                    // loop the game manager
+                    gameManager.loop();
 
                     // Render all graphics on the buffer
                     render(g);

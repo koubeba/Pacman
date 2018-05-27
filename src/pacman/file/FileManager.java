@@ -1,6 +1,4 @@
-package pacman.manager.file;
-
-import pacman.game.InstanceManager;
+package pacman.file;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

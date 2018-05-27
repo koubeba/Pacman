@@ -1,9 +1,8 @@
-package pacman.game;
+package pacman.game.instance;
 
-import pacman.game.interfaces.Collectible;
-import pacman.game.interfaces.SolidObject;
+import pacman.game.instance.interfaces.Collectible;
 
-public class Collector extends Movable implements pacman.game.interfaces.Collector {
+public class Collector extends Movable implements pacman.game.instance.interfaces.Collector {
 
     // FIELDS ----------------------- //
 
@@ -29,12 +28,12 @@ public class Collector extends Movable implements pacman.game.interfaces.Collect
     }
 
     @Override
-    public void checkCollision(pacman.game.SolidObject collider) {
+    public void checkCollision(SolidObject collider) {
 
         // Interact only with collectibles
-        if (collider.getClass().equals(pacman.game.Collectible.class)) {
+        if (collider.getClass().equals(pacman.game.instance.Collectible.class)) {
             if (intersects(collider)) {
-                ((pacman.game.Collectible)collider).beCollected();
+                ((pacman.game.instance.Collectible)collider).beCollected();
             }
         }
 

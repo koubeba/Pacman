@@ -1,6 +1,6 @@
-package pacman.game.interfaces;
+package pacman.game.instance.interfaces;
 
-import pacman.game.MOVEMENT_INPUT;
+import pacman.game.instance.MOVEMENT_INPUT;
 
 public interface Movable extends SolidObject {
     // change the object position

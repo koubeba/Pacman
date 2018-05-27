@@ -1,6 +1,6 @@
 package pacman.render;
 
-import pacman.game.InstanceManager;
+import pacman.game.instance.InstanceManager;
 
 import java.awt.*;
 

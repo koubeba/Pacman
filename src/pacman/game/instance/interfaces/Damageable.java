@@ -1,4 +1,4 @@
-package pacman.game.interfaces;
+package pacman.game.instance.interfaces;
 
 public interface Damageable extends Movable {
     // make this object damaged

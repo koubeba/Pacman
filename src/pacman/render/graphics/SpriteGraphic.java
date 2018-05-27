@@ -1,13 +1,8 @@
 package pacman.render.graphics;
 
-import pacman.manager.file.FileManager;
+import pacman.file.FileManager;
 
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.lang.reflect.Array;
-import java.text.AttributedCharacterIterator;
-import java.util.HashMap;
-import java.util.Map;
 
 // Map HAS to contain the following:
 // -idle

@@ -1,4 +1,6 @@
-package pacman.game;
+package pacman.game.instance;
+
+import pacman.game.instance.Damageable;
 
 public class Ghost extends Damageable {
 

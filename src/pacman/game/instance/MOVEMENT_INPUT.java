@@ -1,4 +1,4 @@
-package pacman.game;
+package pacman.game.instance;
 
 public enum MOVEMENT_INPUT {
     UP,

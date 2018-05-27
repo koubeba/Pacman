@@ -1,10 +1,10 @@
-package pacman.game;
+package pacman.game.instance;
 
 import pacman.render.graphics.SpriteGraphic;
 
 import java.awt.*;
 
-public class SolidObject implements pacman.game.interfaces.SolidObject {
+public class SolidObject implements pacman.game.instance.interfaces.SolidObject {
 
     // FIELDS --------------------- //
     protected SpriteGraphic spriteGraphic;

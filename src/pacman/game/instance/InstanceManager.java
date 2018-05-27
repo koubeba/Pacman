@@ -1,4 +1,4 @@
-package pacman.game;
+package pacman.game.instance;
 
 /*
     All the levels contain:
@@ -9,6 +9,8 @@ package pacman.game;
     TEST: only one solid object
  */
 
+
+import pacman.game.GameManager;
 
 import java.awt.*;
 
@@ -39,7 +41,7 @@ public class InstanceManager {
     }
 
     public void renderAll(Graphics g) {
-        removeAllInactive();
+        //removeAllInactive();
         if (testSolidObject != null) this.testSolidObject.render(g);
         if (this.Clyde != null) this.Clyde.render(g);
     }

@@ -1,13 +1,12 @@
 package pacman.game;
 
+import pacman.game.instance.InstanceManager;
 import pacman.input.InputManager;
-import pacman.render.RenderFrame;
 import pacman.render.RenderManager;
 
-import java.awt.*;
 import java.awt.event.KeyListener;
 
-public class GameManager {
+public class GameManager implements Runnable {
     // there should be shit like current level, state, points
 
     // FIELDS --------------------------------------- //
@@ -24,12 +23,36 @@ public class GameManager {
         this.instanceManager = new InstanceManager(this);
         this.renderManager = new RenderManager();
         this.inputManager = new InputManager(this.instanceManager);
+        this.gameState = GAME_STATE.NORMAL;
     }
 
     // GAME LOOP ------------------------------------ //
 
     public void loop() {
+
+        switch(gameState) {
+            case NORMAL:
+            case POWERUP:
+                //check all collisions
+                this.instanceManager.checkAllCollisions();
+
+                // remove all inactive instances
+                this.instanceManager.removeAllInactive();
+                break;
+            case END:
+                break;
+        }
+
+
     }
+
+    // RUNNABLE ------------------------------------- //
+
+    @Override
+    public void run() {
+
+    }
+
 
     // GETTERS AND SETTERS -------------------------- //
 

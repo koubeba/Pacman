@@ -1,10 +1,8 @@
-package pacman.game;
+package pacman.game.instance;
 
-import pacman.game.interfaces.Collector;
+import pacman.game.instance.interfaces.Collector;
 
-import java.util.List;
-
-public class Collectible extends SolidObject implements pacman.game.interfaces.Collectible {
+public class Collectible extends SolidObject implements pacman.game.instance.interfaces.Collectible {
 
     // FIELDS ------------------------------- //
 

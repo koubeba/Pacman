@@ -1,6 +1,6 @@
-package pacman.game;
+package pacman.game.instance;
 
-public class Damageable extends Movable implements pacman.game.interfaces.Damageable {
+public class Damageable extends Movable implements pacman.game.instance.interfaces.Damageable {
 
     // FIELDS ------------------------------------ //
 
@@ -18,7 +18,7 @@ public class Damageable extends Movable implements pacman.game.interfaces.Damage
     }
 
     @Override
-    public void damageObject(pacman.game.interfaces.Damageable damageable) {
+    public void damageObject(pacman.game.instance.interfaces.Damageable damageable) {
         damageable.beDamaged();
     }
 }

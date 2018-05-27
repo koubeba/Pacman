@@ -1,10 +1,8 @@
 package pacman.input;
 
-import pacman.game.InstanceManager;
-import pacman.game.MOVEMENT_INPUT;
+import pacman.game.instance.InstanceManager;
+import pacman.game.instance.MOVEMENT_INPUT;
 
-import javax.rmi.ssl.SslRMIClientSocketFactory;
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**

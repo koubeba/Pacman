@@ -1,6 +1,8 @@
-package pacman.game;
+package pacman.game.instance;
 
-import pacman.game.interfaces.Damageable;
+import pacman.game.GAME_STATE;
+import pacman.game.GameManager;
+import pacman.game.instance.interfaces.Damageable;
 
 public class Player extends Collector implements Damageable {
 

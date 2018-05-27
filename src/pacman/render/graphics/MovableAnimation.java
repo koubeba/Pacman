@@ -11,7 +11,7 @@ public class MovableAnimation extends Animation {
 
     // CONSTANTS ----------------------- //
 
-    public static final String[] STATES = {"Idle", "Walking"};
+    public static final String[] STATES = {"Idle"};
     public final int[] ANIMATION_STATES = {1, 2};
 
     // METHODS ------------------------- //

@@ -11,6 +11,7 @@ package pacman.game.instance;
 
 
 import pacman.game.GameManager;
+import pacman.game.levels.Level;
 
 import java.awt.*;
 
@@ -18,8 +19,7 @@ public class InstanceManager {
 
     // FIELDS ----------------------- //
 
-    private Player testSolidObject;
-    //private Ghost Clyde;
+    private Level level;
 
     private final GameManager gameManager;
 
@@ -30,28 +30,29 @@ public class InstanceManager {
     // CONSTRUCTORS ----------------- //
 
     public InstanceManager(GameManager gameManager) {
-        this.testSolidObject = new Player("test", 0, 0, 100, gameManager);
 
         this.gameManager = gameManager;
+
+        this.level = new Level(this.gameManager);
     }
 
     public void checkAllCollisions() {
+        level.checkAllCollisions();
     }
 
     public void renderAll(Graphics g) {
-        if (testSolidObject != null) this.testSolidObject.render(g);
+        level.renderAll(g);
     }
 
     public void moveAll(double delta) {
-        testSolidObject.move(delta);
-
+        level.moveAll(delta);
     }
 
     public void receiveInput(MOVEMENT_INPUT input) {
-        testSolidObject.switchDirection(input);
+        level.receiveInput(input);
     }
 
     public void removeAllInactive() {
-        testSolidObject = testSolidObject.isActive() ? testSolidObject : null;
+        level.removeAllInactive();
     }
 }

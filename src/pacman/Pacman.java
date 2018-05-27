@@ -22,27 +22,14 @@ public class Pacman {
 
     public static void main(String[] args) {
         Pacman pacman = new Pacman();
-        //pacman.renderFrame.initRun();
-
-        // ADDING LISTENERS //
-
-        //pacman.renderFrame.addKeyListener(pacman.gameManager.getKeyListener());
-
-        /*
-        pacman.renderFrame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent windowEvent) {
-                pacman.renderFrame.onWindowClosing();
-            }
-        });
-        */
 
         // RUN //
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                pacman.gameManager.create();
+                pacman.gameManager.getInputManager().create();
+                pacman.gameManager.getRenderManager().create(pacman.gameManager.getInstanceManager(), pacman.gameManager);
             }
         });
     }

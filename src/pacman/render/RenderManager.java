@@ -117,11 +117,7 @@ public class RenderManager extends JFrame implements Runnable {
 
                     g.clearRect(0, 0, WIDTH, HEIGHT);
 
-                    //instanceManager.checkAllCollisions();
-
-                    // loop the game manager
-
-                    //gameManager.loop();
+                    gameManager.loop();
 
                     // Render all graphics on the buffer
 

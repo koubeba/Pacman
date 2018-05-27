@@ -6,13 +6,17 @@ import pacman.render.RenderManager;
 
 import java.awt.event.KeyListener;
 
-public class GameManager implements Runnable {
+public class GameManager {
 
     // FIELDS --------------------------------------- //
 
     private final InstanceManager instanceManager;
     private final InputManager inputManager;
     private final RenderManager renderManager;
+
+    // THREAD //
+    private volatile boolean running;
+    private Thread gameThread;
 
     private GAME_STATE gameState;
 
@@ -30,33 +34,18 @@ public class GameManager implements Runnable {
 
     // GAME LOOP ------------------------------------ //
 
-    public void create() {
-        this.inputManager.create();
-        this.renderManager.create(this.instanceManager, this);
-    }
-
-    private void loop() {
+    public void loop() {
         switch(gameState) {
             case NORMAL:
             case POWERUP:
+            case END:
                 //check all collisions
                 this.instanceManager.checkAllCollisions();
 
                 // remove all inactive instances
                 this.instanceManager.removeAllInactive();
                 break;
-            case END:
-                break;
         }
-    }
-
-    // RUNNABLE ------------------------------------- //
-
-    @Override
-    public void run() {
-        loop();
-        renderManager.run();
-        inputManager.run();
     }
 
 

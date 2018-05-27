@@ -58,5 +58,4 @@ public class InstanceManager {
     public void removeAllInactive() {
         testSolidObject = testSolidObject.isActive() ? testSolidObject : null;
     }
-
 }

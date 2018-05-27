@@ -10,7 +10,7 @@ public class FileManager {
 
     // CONSTANTS --------------------------- //
 
-    private final static String IMG_FILES_PATH = "/home/maja/Pulpit/PACMAAAN/src/pacman/manager/file/";
+    private final static String IMG_FILES_PATH = "/home/maja/Pulpit/PACMAAAN/src/pacman/file/";
     private final static String IMG_FORMAT = "gif";
 
     // METHODS -------------------- //

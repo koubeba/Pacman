@@ -5,6 +5,8 @@ import pacman.input.InputManager;
 import pacman.render.RenderManager;
 
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GameManager implements Runnable {
     // there should be shit like current level, state, points
@@ -12,8 +14,8 @@ public class GameManager implements Runnable {
     // FIELDS --------------------------------------- //
 
     private final InstanceManager instanceManager;
-    private final RenderManager renderManager;
     private final InputManager inputManager;
+    private final RenderManager renderManager;
 
     private GAME_STATE gameState;
 
@@ -21,14 +23,22 @@ public class GameManager implements Runnable {
 
     public GameManager() {
         this.instanceManager = new InstanceManager(this);
-        this.renderManager = new RenderManager();
         this.inputManager = new InputManager(this.instanceManager);
+        this.renderManager = new RenderManager();
         this.gameState = GAME_STATE.NORMAL;
+
+        this.renderManager.initRun();
+        this.renderManager.addKeyListener(getKeyListener());
     }
 
     // GAME LOOP ------------------------------------ //
 
-    public void loop() {
+    public void create() {
+        this.inputManager.create();
+        this.renderManager.create(this.instanceManager, this);
+    }
+
+    private void loop() {
 
         switch(gameState) {
             case NORMAL:
@@ -50,7 +60,9 @@ public class GameManager implements Runnable {
 
     @Override
     public void run() {
-
+        loop();
+        renderManager.run();
+        inputManager.run();
     }
 
 

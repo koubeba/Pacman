@@ -54,17 +54,20 @@ public class InputManager implements Runnable {
 
     private void loop(double delta) {
         keyboardInput.poll();
+
+        instanceManager.moveAll(delta);
+
         if (keyboardInput.keyDown(KeyEvent.VK_D)) {
-            instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT, delta);
+            instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT);
         }
         if (keyboardInput.keyDown(KeyEvent.VK_A)) {
-            instanceManager.receiveInput(MOVEMENT_INPUT.LEFT, delta);
+            instanceManager.receiveInput(MOVEMENT_INPUT.LEFT);
         }
         if (keyboardInput.keyDown(KeyEvent.VK_W)) {
-            instanceManager.receiveInput(MOVEMENT_INPUT.UP, delta);
+            instanceManager.receiveInput(MOVEMENT_INPUT.UP);
         }
         if (keyboardInput.keyDown(KeyEvent.VK_S)) {
-            instanceManager.receiveInput(MOVEMENT_INPUT.DOWN, delta);
+            instanceManager.receiveInput(MOVEMENT_INPUT.DOWN);
         }
         try {
             Thread.sleep( 10 );

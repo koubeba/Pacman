@@ -22,12 +22,12 @@ public class RenderFrame extends JFrame implements Runnable {
     private RenderManager renderManager;
 
     // CONSTS ------------------------ //
-    public static int WIDTH = 320;
-    public static int HEIGHT = 240;
-    public static String TITLE = "Render Thread";
-    public static Color BG_COLOR = Color.BLACK;
-    public static boolean IGNORE_REPAINT = true;
-    public static int BUFFER_INT = 2;
+    private static int WIDTH = 400;
+    private static int HEIGHT = 400;
+    private static String TITLE = "Render Thread";
+    private static Color BG_COLOR = Color.BLACK;
+    private static boolean IGNORE_REPAINT = true;
+    private static int BUFFER_INT = 2;
 
     // CONSTRUCTORS ------------------ //
     public RenderFrame() {
@@ -117,7 +117,7 @@ public class RenderFrame extends JFrame implements Runnable {
     }
 
     private void render(Graphics graphics) {
-        frameRate.calculate();
+        //frameRate.calculate();
         // draw graphics
         renderManager.renderInstances(instanceManager, graphics);
     }

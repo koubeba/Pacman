@@ -14,9 +14,9 @@ public class Pacman {
 
     private RenderFrame renderFrame;
 
-    private final InstanceManager instanceManager;
-    private final RenderManager renderManager;
-    private final InputManager inputManager;
+    //private final InstanceManager instanceManager;
+    //private final RenderManager renderManager;
+    //private final InputManager inputManager;
 
     private final GameManager gameManager;
 
@@ -24,11 +24,13 @@ public class Pacman {
 
         renderFrame = new RenderFrame();
 
-        instanceManager = new InstanceManager();
-        renderManager = new RenderManager();
-        inputManager = new InputManager(instanceManager);
+        //instanceManager = new InstanceManager();
+        //renderManager = new RenderManager();
+        //inputManager = new InputManager(instanceManager);
 
-        gameManager = new GameManager(instanceManager, renderManager);
+        //gameManager = new GameManager(instanceManager, renderManager);
+
+        this.gameManager = new GameManager();
     }
 
     public static void main(String[] args) {
@@ -37,7 +39,7 @@ public class Pacman {
 
         // ADDING LISTENERS //
 
-        pacman.renderFrame.addKeyListener(pacman.inputManager.keyboardInput);
+        pacman.renderFrame.addKeyListener(pacman.gameManager.getKeyListener());
 
         pacman.renderFrame.addWindowListener(new WindowAdapter() {
             @Override
@@ -51,9 +53,8 @@ public class Pacman {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                pacman.inputManager.create();
-                pacman.renderFrame.create(pacman.instanceManager, pacman.renderManager);
-
+                pacman.gameManager.getInputManager().create();
+                pacman.renderFrame.create(pacman.gameManager.getInstanceManager(), pacman.gameManager.getRenderManager());
             }
         });
     }

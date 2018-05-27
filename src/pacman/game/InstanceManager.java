@@ -15,36 +15,46 @@ import java.awt.*;
 public class InstanceManager {
 
     // FIELDS ----------------------- //
-    Collector testSolidObject;
-    Collectible dot;
+
+    private Player testSolidObject;
+    private Ghost Clyde;
+
+    private final GameManager gameManager;
 
     // TODO: add player
 
+    // TODO: zrobić tu porządek!!!
+
     // CONSTRUCTORS ----------------- //
 
-    public InstanceManager() {
-        this.testSolidObject = new Collector("test", 0, 0, 100);
-        this.dot = new Collectible("dot", 100, 100, 1);
-        this.dot.addCollector(this.testSolidObject);
+    public InstanceManager(GameManager gameManager) {
+        this.testSolidObject = new Player("test", 0, 0, 100, gameManager);
+        this.Clyde = new Ghost("Clyde", 100, 100, 100);
+
+        this.gameManager = gameManager;
     }
 
     public void checkAllCollisions() {
-        if (this.dot != null) this.testSolidObject.checkCollision(this.dot);
+        this.testSolidObject.checkCollision(this.Clyde);
     }
 
     public void renderAll(Graphics g) {
         removeAllInactive();
         if (testSolidObject != null) this.testSolidObject.render(g);
-        if (this.dot != null) this.dot.render(g);
+        if (this.Clyde != null) this.Clyde.render(g);
     }
 
-    public void receiveInput(MOVEMENT_INPUT input, double delta) {
-        testSolidObject.move(input, delta);
+    public void moveAll(double delta) {
+        testSolidObject.move(delta);
+
+    }
+
+    public void receiveInput(MOVEMENT_INPUT input) {
+        testSolidObject.switchDirection(input);
     }
 
     public void removeAllInactive() {
         testSolidObject = testSolidObject.isActive() ? testSolidObject : null;
-        if (this.dot != null) dot = dot.isActive() ? dot : null;
     }
 
 }

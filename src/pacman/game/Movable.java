@@ -10,6 +10,7 @@ public class Movable extends SolidObject implements pacman.game.interfaces.Movab
     // FIELDS -------------- //
 
     private int speed;
+    private MOVEMENT_INPUT direction = MOVEMENT_INPUT.RIGHT;
 
     // CONSTRUCTORS -------- //
 
@@ -20,6 +21,7 @@ public class Movable extends SolidObject implements pacman.game.interfaces.Movab
     }
 
     // METHODS ------------- //
+    /*
     public void move(MOVEMENT_INPUT direction, double delta) {
         switch (direction) {
             case UP:
@@ -35,6 +37,28 @@ public class Movable extends SolidObject implements pacman.game.interfaces.Movab
                 this.x_position += speed * delta;
                 break;
         }
+    }
+    */
+
+    public void move(double delta) {
+        switch (direction) {
+            case UP:
+                this.y_position -= speed * delta;
+                break;
+            case DOWN:
+                this.y_position += speed * delta;
+                break;
+            case LEFT:
+                this.x_position -= speed * delta;
+                break;
+            case RIGHT:
+                this.x_position += speed * delta;
+                break;
+        }
+    }
+
+    public void switchDirection(MOVEMENT_INPUT direction) {
+        this.direction = direction;
     }
 
 }

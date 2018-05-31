@@ -1,5 +1,6 @@
 package pacman.game.instance;
 
+import pacman.game.instance.GridMap.GridMap;
 import pacman.render.graphics.MovableSpriteGraphic;
 
 public class Movable extends SolidObject implements pacman.game.instance.interfaces.Movable {
@@ -18,6 +19,10 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
     }
 
     // METHODS ------------- //
+
+    public void checkWallCollision(GridMap gridMap) {
+
+    }
 
     public void move(double delta) {
         switch (direction) {

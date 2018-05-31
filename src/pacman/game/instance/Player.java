@@ -4,13 +4,15 @@ import pacman.game.GAME_STATE;
 import pacman.game.GameManager;
 import pacman.game.instance.interfaces.Damageable;
 
-public class Player extends Collector implements Damageable {
+public final class Player extends Collector implements Damageable {
 
     // FIELDS ----------------------------------------- //
 
     private final GameManager gameManager;
 
     private boolean upCollision, downCollision, rightCollision, leftCollision;
+
+    private MOVEMENT_INPUT nextDirection;
 
     // CONSTS ----------------------------------------- //
 
@@ -23,40 +25,13 @@ public class Player extends Collector implements Damageable {
 
         this.gameManager = gameManager;
 
-        this.upCollision = false;
-        this.downCollision = false;
-        this.rightCollision = false;
-        this.leftCollision = false;
+        this.resetCollisionFlags();
     }
 
     // METHODS ---------------------------------------- //
 
     // TODO: write better wall collision... check all sides etc
     public void checkWallCollision(SolidObject collider) {
-
-        // CASE 1: DOWN COLLISION //
-        if (this.y_position < collider.y_position && collider.y_position - this.y_position <= (int)this.spriteGraphic.getImgHeight()) {
-            if (!downCollision) downCollision = Math.abs(this.x_position  - collider.x_position) < collider.spriteGraphic.getImgWidth() - collisionEpsilon;
-        }
-
-        // CASE 2: UP COLLISION //
-
-        if (this.y_position > collider.y_position && this.y_position - collider.y_position <= (int)this.spriteGraphic.getImgHeight()) {
-            if (!upCollision) upCollision = Math.abs(this.x_position - collider.x_position) < collider.spriteGraphic.getImgWidth() - collisionEpsilon;
-        }
-
-        // CASE 3: RIGHT COLLISION //
-
-        if (this.x_position < collider.x_position && collider.x_position - this.x_position <= (int)this.spriteGraphic.getImgWidth()) {
-            if (!rightCollision) rightCollision = Math.abs(collider.y_position - this.y_position) < collider.spriteGraphic.getImgHeight() - collisionEpsilon;
-        }
-
-        // CASE 4: LEFT COLLISION //
-
-        if (this.x_position > collider.x_position && this.x_position - collider.x_position <= (int)collider.spriteGraphic.getImgWidth()) {
-            if (!leftCollision) leftCollision = Math.abs(collider.y_position - this.y_position) < collider.spriteGraphic.getImgHeight() - collisionEpsilon;
-        }
-
 
     }
 
@@ -119,21 +94,25 @@ public class Player extends Collector implements Damageable {
         switch (direction) {
             case UP:
                 if (upCollision) {
+                    this.nextDirection = direction;
                     return;
                 }
                 break;
             case DOWN:
                 if (downCollision) {
+                    this.nextDirection = direction;
                     return;
                 }
                 break;
             case LEFT:
                 if (leftCollision) {
+                    this.nextDirection = direction;
                     return;
                 }
                 break;
             case RIGHT:
                 if (rightCollision) {
+                    this.nextDirection = direction;
                     return;
                 }
                 break;
@@ -146,7 +125,7 @@ public class Player extends Collector implements Damageable {
     public void resetCollisionFlags() {
         this.upCollision = false;
         this.downCollision = false;
-        this.leftCollision = false;
         this.rightCollision = false;
+        this.leftCollision = false;
     }
 }

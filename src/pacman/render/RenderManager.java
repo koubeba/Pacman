@@ -33,8 +33,8 @@ public class RenderManager extends JFrame implements Runnable {
 
     // CONSTS ------------------------ //
 
-        private static int WIDTH = 800;
-        private static int HEIGHT = 800;
+        private static int WIDTH = 400;
+        private static int HEIGHT = 400;
         private static String TITLE = "Render Thread";
         private static Color BG_COLOR = Color.BLACK;
         private static boolean IGNORE_REPAINT = true;

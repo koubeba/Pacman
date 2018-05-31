@@ -119,6 +119,10 @@ public class RenderManager extends JFrame implements Runnable {
 
                     gameManager.loop();
 
+                    try {
+                        Thread.sleep( 10 );
+                    } catch( InterruptedException ex ) { }
+
                     // Render all graphics on the buffer
 
                     render(g);

@@ -12,6 +12,10 @@ public class Player extends Collector implements Damageable {
 
     private boolean upCollision, downCollision, rightCollision, leftCollision;
 
+    // CONSTS ----------------------------------------- //
+
+    private final static int collisionEpsilon = 1;
+
     // CONSTRUCTORS ----------------------------------- //
 
     public Player(String name, int x_position, int y_position, int speed, GameManager gameManager) {
@@ -28,10 +32,31 @@ public class Player extends Collector implements Damageable {
     // METHODS ---------------------------------------- //
 
     // TODO: write better wall collision... check all sides etc
-    public boolean checkWallCollision(SolidObject collider) {
+    public void checkWallCollision(SolidObject collider) {
 
-        // TODO: differentiate 4 cases
-        return (intersects(collider));
+        // CASE 1: DOWN COLLISION //
+        if (this.y_position < collider.y_position && collider.y_position - this.y_position <= (int)this.spriteGraphic.getImgHeight()) {
+            if (!downCollision) downCollision = Math.abs(this.x_position  - collider.x_position) < collider.spriteGraphic.getImgWidth() - collisionEpsilon;
+        }
+
+        // CASE 2: UP COLLISION //
+
+        if (this.y_position > collider.y_position && this.y_position - collider.y_position <= (int)this.spriteGraphic.getImgHeight()) {
+            if (!upCollision) upCollision = Math.abs(this.x_position - collider.x_position) < collider.spriteGraphic.getImgWidth() - collisionEpsilon;
+        }
+
+        // CASE 3: RIGHT COLLISION //
+
+        if (this.x_position < collider.x_position && collider.x_position - this.x_position <= (int)this.spriteGraphic.getImgWidth()) {
+            if (!rightCollision) rightCollision = Math.abs(collider.y_position - this.y_position) < collider.spriteGraphic.getImgHeight() - collisionEpsilon;
+        }
+
+        // CASE 4: LEFT COLLISION //
+
+        if (this.x_position > collider.x_position && this.x_position - collider.x_position <= (int)collider.spriteGraphic.getImgWidth()) {
+            if (!leftCollision) leftCollision = Math.abs(collider.y_position - this.y_position) < collider.spriteGraphic.getImgHeight() - collisionEpsilon;
+        }
+
 
     }
 
@@ -57,6 +82,24 @@ public class Player extends Collector implements Damageable {
     }
 
     @Override
+    public void move(double delta) {
+        switch (direction) {
+            case UP:
+                if (!upCollision) this.y_position -= speed * delta;
+                break;
+            case DOWN:
+                if (!downCollision) this.y_position += speed * delta;
+                break;
+            case LEFT:
+                if (!leftCollision) this.x_position -= speed * delta;
+                break;
+            case RIGHT:
+                if (!rightCollision) this.x_position += speed * delta;
+                break;
+        }
+    }
+
+    @Override
     public void beDamaged() {
         this.die();
     }
@@ -73,12 +116,37 @@ public class Player extends Collector implements Damageable {
 
     @Override
     public void switchDirection(MOVEMENT_INPUT direction) {
-        if (!upCollision) super.switchDirection(direction);
+        switch (direction) {
+            case UP:
+                if (upCollision) {
+                    return;
+                }
+                break;
+            case DOWN:
+                if (downCollision) {
+                    return;
+                }
+                break;
+            case LEFT:
+                if (leftCollision) {
+                    return;
+                }
+                break;
+            case RIGHT:
+                if (rightCollision) {
+                    return;
+                }
+                break;
+        }
+        this.direction = direction;
     }
 
     // GETTERS AND SETTERS ------------------------- //
 
-    public void setUpCollision(boolean upCollision) {
-        this.upCollision = upCollision;
+    public void resetCollisionFlags() {
+        this.upCollision = false;
+        this.downCollision = false;
+        this.leftCollision = false;
+        this.rightCollision = false;
     }
 }

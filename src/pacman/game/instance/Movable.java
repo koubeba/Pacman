@@ -6,8 +6,8 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
 
     // FIELDS -------------- //
 
-    private int speed;
-    private MOVEMENT_INPUT direction = MOVEMENT_INPUT.RIGHT;
+    protected int speed;
+    protected MOVEMENT_INPUT direction = MOVEMENT_INPUT.RIGHT;
 
     // CONSTRUCTORS -------- //
 

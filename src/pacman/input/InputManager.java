@@ -51,6 +51,7 @@ public class InputManager implements Runnable {
     }
 
     private void loop(double delta) {
+
         keyboardInput.poll();
 
         instanceManager.moveAll(delta);

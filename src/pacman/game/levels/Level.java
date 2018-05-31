@@ -69,6 +69,15 @@ public class Level {
         this.walls.add(new SolidObject("Wall", 75,  25));
         this.walls.add(new SolidObject("Wall", 100,  25));
         this.walls.add(new SolidObject("Wall", 100, 50));
+        this.walls.add(new SolidObject("Wall", 100, 100));
+        this.walls.add(new SolidObject("Wall", 100, 125));
+        this.walls.add(new SolidObject("Wall", 100, 150));
+        this.walls.add(new SolidObject("Wall", 100, 175));
+        this.walls.add(new SolidObject("Wall", 100, 200));
+        this.walls.add(new SolidObject("Wall", 100, 225));
+        this.walls.add(new SolidObject("Wall", 100, 250));
+        this.walls.add(new SolidObject("Wall", 100, 275));
+        this.walls.add(new SolidObject("Wall", 100, 300));
 
         // ADD DOTS //
 
@@ -102,20 +111,11 @@ public class Level {
 
             // CHECK COLLISIONS WITH WALLS //
 
-            boolean collision = false;
+            this.player.resetCollisionFlags();
 
             for (SolidObject wall: walls) {
-                if (this.player.checkWallCollision(wall)) {
-                    collision = true;
-                    break;
-                }
-
-                collision = false;
+                this.player.checkWallCollision(wall);
             }
-
-            this.player.setUpCollision(collision);
-
-
     }
 
     public void renderAll(Graphics g) {

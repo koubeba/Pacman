@@ -63,7 +63,12 @@ public class Level {
 
         // ADD WALLS //
 
-        this.walls.add(new SolidObject("Wall", 50, 50));
+        this.walls.add(new SolidObject("Wall", 0, 25));
+        this.walls.add(new SolidObject("Wall", 25, 25));
+        this.walls.add(new SolidObject("Wall", 50,  25));
+        this.walls.add(new SolidObject("Wall", 75,  25));
+        this.walls.add(new SolidObject("Wall", 100,  25));
+        this.walls.add(new SolidObject("Wall", 100, 50));
 
         // ADD DOTS //
 
@@ -94,6 +99,22 @@ public class Level {
             this.player.checkGhostCollision(this.inky, this.gameManager.getGameState());
             this.player.checkGhostCollision(this.pinky, this.gameManager.getGameState());
             this.player.checkGhostCollision(this.clyde, this.gameManager.getGameState());
+
+            // CHECK COLLISIONS WITH WALLS //
+
+            boolean collision = false;
+
+            for (SolidObject wall: walls) {
+                if (this.player.checkWallCollision(wall)) {
+                    collision = true;
+                    break;
+                }
+
+                collision = false;
+            }
+
+            this.player.setUpCollision(collision);
+
 
     }
 

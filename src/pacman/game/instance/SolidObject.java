@@ -15,6 +15,10 @@ public class SolidObject implements pacman.game.instance.interfaces.SolidObject 
     // TODO: change it in a vector?
     protected int x_position, y_position;
 
+    // CONSTANTS ------------------ //
+
+    private final static int colliderEpsilon = 1;
+
     // CONSTRUCTORS --------------- //
 
     public SolidObject(String name, int x_position, int y_position) {
@@ -44,14 +48,14 @@ public class SolidObject implements pacman.game.instance.interfaces.SolidObject 
         boolean x, y;
 
         if (this.x_position < object.x_position) {
-            x = object.x_position - this.x_position <= this.spriteGraphic.getImgWidth();
+            x = Math.abs(object.x_position - this.x_position) <= this.spriteGraphic.getImgWidth() + colliderEpsilon;
         } else {
-            x = this.x_position - object.x_position <= object.spriteGraphic.getImgWidth();
+            x = Math.abs(this.x_position - object.x_position) <= object.spriteGraphic.getImgWidth() + colliderEpsilon;
         }
         if (this.y_position < object.y_position) {
-            y = object.y_position - this.y_position <= this.spriteGraphic.getImgHeight();
+            y = Math.abs(object.y_position - this.y_position) <= this.spriteGraphic.getImgHeight() + colliderEpsilon;
         } else {
-            y = this.y_position - object.y_position <= object.spriteGraphic.getImgHeight();
+            y = Math.abs(this.y_position - object.y_position) <= object.spriteGraphic.getImgHeight() + colliderEpsilon;
         }
 
         return x && y;

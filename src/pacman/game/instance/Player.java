@@ -27,24 +27,11 @@ public class Player extends Collector implements Damageable {
 
     // METHODS ---------------------------------------- //
 
-    @Override
-    public void checkCollision(SolidObject collider) {
-        // check collision with collectibles
-        super.checkCollision(collider);
-
-        // check collisions with Ghosts
-        if (collider instanceof Ghost) {
-            if (intersects(collider)) {
-                this.beDamaged();
-            }
-        }
-    }
-
     // TODO: write better wall collision... check all sides etc
     public boolean checkWallCollision(SolidObject collider) {
 
-        // CHECK UP COLLISION //
-        return false;
+        // TODO: differentiate 4 cases
+        return (intersects(collider));
 
     }
 
@@ -82,5 +69,16 @@ public class Player extends Collector implements Damageable {
     public void die() {
         super.die();
         gameManager.setGameState(GAME_STATE.END);
+    }
+
+    @Override
+    public void switchDirection(MOVEMENT_INPUT direction) {
+        if (!upCollision) super.switchDirection(direction);
+    }
+
+    // GETTERS AND SETTERS ------------------------- //
+
+    public void setUpCollision(boolean upCollision) {
+        this.upCollision = upCollision;
     }
 }

@@ -57,7 +57,7 @@ public class Level {
 
         // INITIALIZE PLAYER //
 
-        this.player = new Player("Pacman", 0, 0, 100, gameManager);
+        this.player = new Player("Pacman", 0, 0, 100);
 
         // INITIALIZE GHOSTS //
 
@@ -242,6 +242,10 @@ public class Level {
             this.player.checkCollectibleCollision(dot);
         }
 
+        if (this.powerUp != null && this.powerUp.isActive()) {
+            this.player.checkCollectibleCollision(powerUp);
+        }
+
         // CHECK COLLISIONS WITH GHOSTS //
 
         this.player.checkGhostCollision(this.blinky, this.gameManager.getGameState());
@@ -274,15 +278,19 @@ public class Level {
 
         // RENDER GHOSTS //
 
-        this.blinky.render(g);
-        this.inky.render(g);
-        this.pinky.render(g);
-        this.clyde.render(g);
+        if (this.blinky.isActive()) this.blinky.render(g);
+        if (this.inky.isActive()) this.inky.render(g);
+        if (this.pinky.isActive()) this.pinky.render(g);
+        if (this.clyde.isActive()) this.clyde.render(g);
 
         // RENDER COLLECTIBLES //
 
         for (Collectible dot : dots) {
             if (dot.isActive()) dot.render(g);
+        }
+
+        if (this.powerUp != null && this.powerUp.isActive()) {
+            this.powerUp.render(g);
         }
 
     }
@@ -327,9 +335,15 @@ public class Level {
 
     public boolean isPowerUp() {
         if (this.powerUp != null) {
-            return this.powerUp.isActive() && this.powerUp.isPowerUpMode();
+            return this.powerUp.isPowerUpMode();
         } else {
             return false;
+        }
+    }
+
+    public void deactivatePowerUp() {
+        if (this.powerUp != null) {
+            this.powerUp.setPowerUpMode(false);
         }
     }
 
@@ -337,5 +351,6 @@ public class Level {
 
         //TODO: Randomize position
         this.powerUp = new PowerUp("Cherry", 0, 25, 20);
+        this.powerUp.addCollector(this.player);
     }
 }

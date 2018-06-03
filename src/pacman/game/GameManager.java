@@ -55,7 +55,10 @@ public class GameManager {
                 }
 
                 if (this.instanceManager.isPowerUp()) {
+                    currentTime = System.currentTimeMillis();
+                    previousTime = System.currentTimeMillis();
                     this.gameState = GAME_STATE.POWERUP;
+                    this.instanceManager.deactivatePowerUp();
                 }
 
                 currentTime = System.currentTimeMillis();
@@ -74,7 +77,7 @@ public class GameManager {
                 this.instanceManager.restartLevel();
 
                 currentTime = System.currentTimeMillis();
-                if (currentTime - previousTime > 3000) {
+                if (currentTime - previousTime > 5000) {
                     currentTime = System.currentTimeMillis();
                     previousTime = System.currentTimeMillis();
 

@@ -72,6 +72,10 @@ public class InstanceManager {
         return this.level.isPowerUp();
     }
 
+    public void deactivatePowerUp() {
+        this.level.deactivatePowerUp();
+    }
+
     public void activatePowerUp() {
         this.level.activatePowerUp();
     }

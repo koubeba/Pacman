@@ -1,8 +1,8 @@
 package pacman.game.instance;
 
-public class Damageable extends Movable implements pacman.game.instance.interfaces.Damageable {
+import pacman.game.GameManager;
 
-    // FIELDS ------------------------------------ //
+public class Damageable extends Movable implements pacman.game.instance.interfaces.Damageable {
 
     // CONSTRUCTORS ------------------------------ //
 

@@ -20,7 +20,7 @@ public final class Player extends Collector implements Damageable {
 
     // CONSTRUCTORS ----------------------------------- //
 
-    public Player(String name, int x_position, int y_position, int speed, GameManager gameManager) {
+    public Player(String name, int x_position, int y_position, int speed) {
         super(name, x_position, y_position, speed);
 
         this.resetCollisionFlags();
@@ -42,12 +42,12 @@ public final class Player extends Collector implements Damageable {
     public void checkGhostCollision(Ghost ghost, GAME_STATE game_state) {
         switch (game_state) {
             case NORMAL:
-                if (intersects(ghost)) {
+                if (intersects(ghost) && ghost.isActive()) {
                     this.beDamaged();
                 }
                 break;
             case POWERUP:
-                if (intersects(ghost)) {
+                if (intersects(ghost) && ghost.isActive()) {
                     damageObject(ghost);
                 }
                 break;

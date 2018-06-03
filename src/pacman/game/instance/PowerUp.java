@@ -25,4 +25,8 @@ public final class PowerUp extends Collectible {
     public boolean isPowerUpMode() {
         return this.PowerUpMode;
     }
+
+    public void setPowerUpMode(boolean powerUpMode) {
+        PowerUpMode = powerUpMode;
+    }
 }

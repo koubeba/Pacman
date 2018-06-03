@@ -1,5 +1,6 @@
 package pacman.game.instance;
 
+import pacman.Pacman;
 import pacman.Vector2;
 import pacman.game.instance.GridMap.GridMap;
 import pacman.render.graphics.MovableSpriteGraphic;
@@ -89,33 +90,30 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
 
     public void switchDirection (MOVEMENT_INPUT direction) {
 
-        Vector2 playerVector = new Vector2(this.x_position, this.y_position);
-        /*
+        Vector2 vecPos = new Vector2(this.x_position, this.y_position);
 
         switch (direction) {
             case UP:
-                if (!this.gridMap.getTile(new Vector2(this.x_position, this.y_position)).isUp()){
+                if (this.gridMap.edgeUp(vecPos)) {
                     return;
                 }
                 break;
             case DOWN:
-                if (!this.gridMap.getTile(new Vector2(this.x_position, this.y_position)).isDown()) {
+                if (this.gridMap.edgeDown(vecPos)) {
                     return;
                 }
                 break;
             case LEFT:
-                if (!this.gridMap.getTile(new Vector2(this.x_position, this.y_position)).isLeft()) {
+                if (this.gridMap.edgeLeft(vecPos)) {
                     return;
                 }
                 break;
             case RIGHT:
-                if (!this.gridMap.getTile(new Vector2(this.x_position, this.y_position)).isRight()) {
+                if (this.gridMap.edgeRight(vecPos)) {
                     return;
                 }
-                break;
         }
-        */
-        this.nextDirection = direction;
+            this.nextDirection = direction;
     }
 
 
@@ -123,6 +121,10 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
 
     public void setGridMap(GridMap gridMap) {
         this.gridMap = gridMap;
+    }
+
+    public MOVEMENT_INPUT getDirection() {
+        return this.direction;
     }
 
 }

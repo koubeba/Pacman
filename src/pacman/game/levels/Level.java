@@ -61,10 +61,10 @@ public class Level {
 
         // INITIALIZE GHOSTS //
 
-        //this.blinky = new Blinky("Blinky", 175, 175, 100, this.player);
-        //this.inky = new Inky("Inky", 200, 175, 100, this.player);
-        //this.pinky = new Pinky("Pinky", 175, 200, 100, this.player);
-        //this.clyde = new Clyde("Clyde", 200, 200, 100, this.player);
+        this.blinky = new Blinky("Blinky", 175, 175, 100, this.player);
+        this.inky = new Inky("Inky", 200, 175, 100, this.player);
+        this.pinky = new Pinky("Pinky", 175, 200, 100, this.player);
+        this.clyde = new Clyde("Clyde", 200, 200, 100, this.player);
 
         // ADD WALLS //
 
@@ -196,10 +196,10 @@ public class Level {
 
         this.player.setGridMap(this.gridMap);
 
-        //this.blinky.setGridMap(this.gridMap);
-        //this.inky.setGridMap(this.gridMap);
-        //this.pinky.setGridMap(this.gridMap);
-        //this.clyde.setGridMap(this.gridMap);
+        this.blinky.setGridMap(this.gridMap);
+        this.inky.setGridMap(this.gridMap);
+        this.pinky.setGridMap(this.gridMap);
+        this.clyde.setGridMap(this.gridMap);
 
         // ADD DOTS //
 
@@ -226,10 +226,10 @@ public class Level {
 
             // CHECK COLLISIONS WITH GHOSTS //
 
-            //this.player.checkGhostCollision(this.blinky, this.gameManager.getGameState());
-            //this.player.checkGhostCollision(this.inky, this.gameManager.getGameState());
-            //this.player.checkGhostCollision(this.pinky, this.gameManager.getGameState());
-            //this.player.checkGhostCollision(this.clyde, this.gameManager.getGameState());
+            this.player.checkGhostCollision(this.blinky, this.gameManager.getGameState());
+            this.player.checkGhostCollision(this.inky, this.gameManager.getGameState());
+            this.player.checkGhostCollision(this.pinky, this.gameManager.getGameState());
+            this.player.checkGhostCollision(this.clyde, this.gameManager.getGameState());
 
             // CHECK COLLISIONS WITH WALLS //
 
@@ -256,10 +256,10 @@ public class Level {
 
         // RENDER GHOSTS //
 
-        //this.blinky.render(g);
-        //this.inky.render(g);
-        //this.pinky.render(g);
-        //this.clyde.render(g);
+        this.blinky.render(g);
+        this.inky.render(g);
+        this.pinky.render(g);
+        this.clyde.render(g);
 
         // RENDER COLLECTIBLES //
 
@@ -277,10 +277,10 @@ public class Level {
 
         // MOVE THE GHOSTS //
 
-        //this.blinky.move(delta);
-        //this.inky.move(delta);
-        //this.pinky.move(delta);
-        //this.clyde.move(delta);
+        this.blinky.move(delta);
+        this.inky.move(delta);
+        this.pinky.move(delta);
+        this.clyde.move(delta);
     }
 
     public void receiveInput(MOVEMENT_INPUT input) {

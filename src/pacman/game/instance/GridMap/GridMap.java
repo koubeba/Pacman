@@ -86,8 +86,21 @@ public class GridMap {
         return this.alignedToTileVertical(vector2) && this.alignedToTileHorizontal(vector2);
     }
 
+    public boolean edgeUp(Vector2 vector2) {
+        return vector2.getY() == 0;
+    }
 
+    public boolean edgeDown(Vector2 vector2) {
+        return vector2.getY() == this.tileCount.getY() - 1;
+    }
 
+    public boolean edgeLeft(Vector2 vector2) {
+        return vector2.getX() == 0;
+    }
+
+    public boolean edgeRight(Vector2 vector2) {
+        return vector2.getX() == this.tileCount.getX() - 1;
+    }
     public Tile getTile(Vector2 vector2) {
         return tiles.get(SnapToGrid(vector2));
     }

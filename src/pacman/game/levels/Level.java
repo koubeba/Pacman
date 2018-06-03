@@ -265,6 +265,12 @@ public class Level {
     }
 
     public void renderAll(Graphics g) {
+
+        // RENDER SCORE //
+
+        g.drawString(String.valueOf(this.player.getPoints()), 10, 10);
+
+
         // RENDER WALLS //
 
 
@@ -275,7 +281,6 @@ public class Level {
         // RENDER PLAYER //
 
         this.player.render(g);
-
         // RENDER GHOSTS //
 
         if (this.blinky.isActive()) this.blinky.render(g);

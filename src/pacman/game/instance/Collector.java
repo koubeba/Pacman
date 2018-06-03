@@ -27,6 +27,10 @@ public class Collector extends Movable implements pacman.game.instance.interface
         return this.points;
     }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
     @Override
     public void checkCollision(SolidObject collider) {
 

@@ -5,6 +5,8 @@ import pacman.Vector2;
 import pacman.game.instance.GridMap.GridMap;
 import pacman.render.graphics.MovableSpriteGraphic;
 
+import java.awt.*;
+
 public class Movable extends SolidObject implements pacman.game.instance.interfaces.Movable {
 
     // FIELDS -------------- //
@@ -14,6 +16,8 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
     protected MOVEMENT_INPUT nextDirection = MOVEMENT_INPUT.RIGHT;
 
     protected GridMap gridMap;
+
+    protected MovableSpriteGraphic spriteGraphic;
 
     // CONSTRUCTORS -------- //
 
@@ -25,8 +29,8 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
 
     // METHODS ------------- //
 
-    public void checkWallCollision(GridMap gridMap) {
-
+    public void animate() {
+        this.spriteGraphic.animate();
     }
 
     public void move(double delta) {
@@ -123,6 +127,12 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
                 }
         }
             this.nextDirection = direction;
+    }
+
+    @Override
+    public void render(Graphics g) {
+        this.spriteGraphic.setPosition(this.x_position, this.y_position);
+        this.spriteGraphic.render(g);
     }
 
 

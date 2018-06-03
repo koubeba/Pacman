@@ -31,6 +31,10 @@ public class MovableSpriteGraphic extends SpriteGraphic {
         this.imgWidth = animation.getCurrentImage().getWidth(null);
     }
 
+    // METHODS ---------------------------- //
+
+
+
     public void render(Graphics g) {
         g.drawImage(this.animation.getCurrentImage(), x_position, y_position, null);
     }

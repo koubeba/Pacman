@@ -48,6 +48,7 @@ public final class Player extends Collector implements Damageable {
                 break;
             case POWERUP:
                 if (intersects(ghost) && ghost.isActive()) {
+                    this.points += 200;
                     damageObject(ghost);
                 }
                 break;
@@ -61,6 +62,7 @@ public final class Player extends Collector implements Damageable {
 
     @Override
     public void damageObject(Damageable damageable) {
+        damageable.die();
     }
 
     @Override

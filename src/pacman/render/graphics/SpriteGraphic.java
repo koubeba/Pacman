@@ -62,6 +62,10 @@ public class SpriteGraphic {
 
     // METHODS ----------------------------- //
 
+    public void animate() {
+        this.animation.animate();
+    }
+
     public void setPosition(int x_position, int y_position) {
         this.x_position = x_position;
         this.y_position = y_position;

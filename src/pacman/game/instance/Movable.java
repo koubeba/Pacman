@@ -59,6 +59,8 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
 
             switch (direction) {
                 case UP:
+                    if (this.gridMap.alignedToTileVertical(playerVector) && this.gridMap.edgeUp(playerVector)) return;
+
                     if (this.gridMap.alignedToTileVertical(playerVector) && !this.gridMap.getTile(playerVector).isUp()) {
                         return;
                     } else {
@@ -66,19 +68,26 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
                     }
                     break;
                 case DOWN:
+                    if (this.gridMap.alignedToTileVertical(playerVector) && this.gridMap.edgeDown(this.gridMap.SnapToGrid(playerVector))) return;
+
                     if (this.gridMap.alignedToTileVertical(playerVector) && !this.gridMap.getTile(playerVector).isDown()){
                         return;
                     } else {
                         this.y_position +=  1;
                     }
                     break;
-                case LEFT:if (this.gridMap.alignedToTileHorizontal(playerVector) && !this.gridMap.getTile(playerVector).isLeft()) {
+                case LEFT:
+                    if (this.gridMap.alignedToTileHorizontal(playerVector) && this.gridMap.edgeLeft(playerVector)) return;
+
+                    if (this.gridMap.alignedToTileHorizontal(playerVector) && !this.gridMap.getTile(playerVector).isLeft()) {
                         return;
                     } else {
                         this.x_position -= 1;
                     }
                     break;
                 case RIGHT:
+                    if (this.gridMap.alignedToTileHorizontal(playerVector) && this.gridMap.edgeRight(this.gridMap.SnapToGrid(playerVector))) return;
+
                     if (this.gridMap.alignedToTileHorizontal(playerVector) && !this.gridMap.getTile(playerVector).isRight()) {
                         return;
                     } else {

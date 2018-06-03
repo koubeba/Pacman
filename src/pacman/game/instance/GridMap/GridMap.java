@@ -91,7 +91,7 @@ public class GridMap {
     }
 
     public boolean edgeDown(Vector2 vector2) {
-        return vector2.getY() == this.tileCount.getY() - 1;
+        return vector2.getY() == (this.tileCount.getY()-1) * (this.tileSize.getY());
     }
 
     public boolean edgeLeft(Vector2 vector2) {
@@ -99,7 +99,7 @@ public class GridMap {
     }
 
     public boolean edgeRight(Vector2 vector2) {
-        return vector2.getX() == this.tileCount.getX() - 1;
+        return vector2.getX() == (this.tileCount.getX()- 1)* (this.tileSize.getX());
     }
     public Tile getTile(Vector2 vector2) {
         return tiles.get(SnapToGrid(vector2));

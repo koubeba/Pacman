@@ -16,7 +16,7 @@ import pacman.game.levels.Level;
 
 import java.awt.*;
 
-public class InstanceManager {
+public final class InstanceManager {
 
     // FIELDS ----------------------- //
 

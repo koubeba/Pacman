@@ -2,7 +2,7 @@ package pacman.game.instance;
 
 import pacman.Vector2;
 
-public class Blinky extends Ghost {
+public final class Blinky extends Ghost {
 
     // CONSTRUCTORS -------------------- //
 

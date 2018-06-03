@@ -7,7 +7,7 @@ import pacman.render.RenderManager;
 import java.awt.*;
 import java.awt.event.KeyListener;
 
-public class GameManager {
+public final class GameManager {
 
     // FIELDS --------------------------------------- //
 

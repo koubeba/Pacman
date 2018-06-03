@@ -1,6 +1,6 @@
 package pacman.game.instance;
 
-public class Inky extends Ghost {
+public final class Inky extends Ghost {
 
     // CONSTRUCTORS -------------------- //
 

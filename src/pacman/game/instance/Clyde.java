@@ -1,6 +1,6 @@
 package pacman.game.instance;
 
-public class Clyde extends Ghost {
+public final class Clyde extends Ghost {
 
     // CONSTRUCTORS -------------------- //
 

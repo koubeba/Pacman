@@ -15,7 +15,7 @@ import static java.lang.Thread.sleep;
  *  The actual rendering will take place in the render manager.
  */
 
-public class RenderManager extends JFrame implements Runnable {
+public final class RenderManager extends JFrame implements Runnable {
 
     // FIELDS ------------------------ //
 

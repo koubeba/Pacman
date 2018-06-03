@@ -83,4 +83,8 @@ public final class Player extends Collector implements Damageable {
     public boolean isRestart() {
         return restart;
     }
+
+    public MOVEMENT_INPUT getNextDirection() {
+        return nextDirection;
+    }
 }

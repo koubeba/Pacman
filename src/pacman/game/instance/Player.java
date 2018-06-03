@@ -57,24 +57,6 @@ public final class Player extends Collector implements Damageable {
     }
 
     @Override
-    public void move(double delta) {
-        switch (direction) {
-            case UP:
-                if (!upCollision) this.y_position -= speed * delta;
-                break;
-            case DOWN:
-                if (!downCollision) this.y_position += speed * delta;
-                break;
-            case LEFT:
-                if (!leftCollision) this.x_position -= speed * delta;
-                break;
-            case RIGHT:
-                if (!rightCollision) this.x_position += speed * delta;
-                break;
-        }
-    }
-
-    @Override
     public void beDamaged() {
         this.die();
     }
@@ -87,37 +69,6 @@ public final class Player extends Collector implements Damageable {
     public void die() {
         super.die();
         gameManager.setGameState(GAME_STATE.END);
-    }
-
-    @Override
-    public void switchDirection(MOVEMENT_INPUT direction) {
-        switch (direction) {
-            case UP:
-                if (upCollision) {
-                    this.nextDirection = direction;
-                    return;
-                }
-                break;
-            case DOWN:
-                if (downCollision) {
-                    this.nextDirection = direction;
-                    return;
-                }
-                break;
-            case LEFT:
-                if (leftCollision) {
-                    this.nextDirection = direction;
-                    return;
-                }
-                break;
-            case RIGHT:
-                if (rightCollision) {
-                    this.nextDirection = direction;
-                    return;
-                }
-                break;
-        }
-        this.direction = direction;
     }
 
     // GETTERS AND SETTERS ------------------------- //

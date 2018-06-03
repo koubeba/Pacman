@@ -1,5 +1,8 @@
 package pacman.game.instance.GridMap;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Tile {
 
     // FIELDS ------------------------- //
@@ -25,6 +28,24 @@ public class Tile {
     public Tile() {
         this.open = false;
         this.possibleMovement = new PossibleMovement(false);
+    }
+
+    // METHODS --------------------- //
+
+    public String toString() {
+        return "UP: " + this.isUp() + " DOWN " + this.isDown() + " LEFT: " + this.isLeft() + " RIGHT: " + this.isRight();
+    }
+
+    public String toStringNonVerbose() {
+        String Up = this.isUp() ? "1" : "0";
+        String Down = this.isDown() ? "1" : "0";
+        String Left = this.isLeft() ? "1" : "0";
+        String Right = this.isRight() ? "1" : "0";
+
+        String Open = this.isOpen() ? "1" : "0";
+
+        return Left;
+
     }
 
     // GETTERS AND SETTERS --------- //

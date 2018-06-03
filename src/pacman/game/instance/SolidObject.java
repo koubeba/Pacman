@@ -69,6 +69,14 @@ public class SolidObject implements pacman.game.instance.interfaces.SolidObject 
     // GETTERS AND SETTERS ------------------------------ //
 
 
+    public int getX_position() {
+        return x_position;
+    }
+
+    public int getY_position() {
+        return y_position;
+    }
+
     public boolean isActive() {
         return active;
     }

@@ -308,10 +308,10 @@ public class Level {
 
         // MOVE THE GHOSTS //
 
-        this.blinky.move(delta);
-        this.inky.move(delta);
-        this.pinky.move(delta);
-        this.clyde.move(delta);
+        if (this.blinky.isActive()) this.blinky.move(delta);
+        if (this.inky.isActive()) this.inky.move(delta);
+        if (this.pinky.isActive()) this.pinky.move(delta);
+        if (this.clyde.isActive()) this.clyde.move(delta);
     }
 
     public void receiveInput(MOVEMENT_INPUT input) {

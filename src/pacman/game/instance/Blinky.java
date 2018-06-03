@@ -40,5 +40,49 @@ public final class Blinky extends Ghost {
             }
         }
 
+        // If there is an obstacle in the way //
+
+        Vector2 playerVector = new Vector2(this.x_position, this.y_position);
+
+        switch (this.nextDirection) {
+            case UP:
+                if (this.gridMap.alignedToTileVertical(playerVector) && !this.gridMap.getTile(playerVector).isUp()) {
+                    if (dif.getX() > 0) {
+                        this.nextDirection = MOVEMENT_INPUT.RIGHT;
+                    } else {
+                        this.nextDirection = MOVEMENT_INPUT.LEFT;
+                    }
+                }
+                break;
+            case DOWN:
+                if (this.gridMap.alignedToTileVertical(playerVector) && !this.gridMap.getTile(playerVector).isDown()) {
+                    if (dif.getX() > 0) {
+                        this.nextDirection = MOVEMENT_INPUT.RIGHT;
+                    } else {
+                        this.nextDirection = MOVEMENT_INPUT.LEFT;
+                    }
+                }
+                break;
+            case RIGHT:
+                if (this.gridMap.alignedToTileHorizontal(playerVector) && !this.gridMap.getTile(playerVector).isRight()) {
+                    if (dif.getY() > 0) {
+                        this.nextDirection = MOVEMENT_INPUT.UP;
+                    } else {
+                        this.nextDirection = MOVEMENT_INPUT.DOWN;
+                    }
+                }
+                break;
+            case LEFT:
+                if (this.gridMap.alignedToTileHorizontal(playerVector) && !this.gridMap.getTile(playerVector).isLeft()) {
+                    if (dif.getY() > 0) {
+                        this.nextDirection = MOVEMENT_INPUT.UP;
+                    } else {
+                        this.nextDirection = MOVEMENT_INPUT.DOWN;
+                    }
+                }
+                break;
+        }
+
     }
+
 }

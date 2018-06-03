@@ -17,11 +17,11 @@ public class GameManager {
 
     private int lives = 3;
 
-    // THREAD //
-    private volatile boolean running;
-    private Thread gameThread;
-
     private GAME_STATE gameState;
+
+    // TIME //
+    private long currentTime;
+    private long previousTime;
 
     // CONSTRUCTORS --------------------------------- //
 
@@ -33,6 +33,9 @@ public class GameManager {
 
         this.renderManager.initRun();
         this.renderManager.addKeyListener(getKeyListener());
+
+        this.currentTime = System.currentTimeMillis();
+        this.previousTime = System.currentTimeMillis();
     }
 
     // GAME LOOP ------------------------------------ //
@@ -40,7 +43,6 @@ public class GameManager {
     public void loop() {
         switch(gameState) {
             case NORMAL:
-            case POWERUP:
                 //check all collisions
                 this.instanceManager.checkAllCollisions();
                 // remove all inactive instances
@@ -51,14 +53,56 @@ public class GameManager {
                 if (this.lives == 0) {
                     this.gameState = GAME_STATE.END;
                 }
+
+                if (this.instanceManager.isPowerUp()) {
+                    this.gameState = GAME_STATE.POWERUP;
+                }
+
+                currentTime = System.currentTimeMillis();
+                if (currentTime - previousTime > 10000) {
+                    currentTime = System.currentTimeMillis();
+                    previousTime = System.currentTimeMillis();
+
+                    this.instanceManager.activatePowerUp();
+                }
+                break;
+            case POWERUP:
+                this.instanceManager.checkAllCollisions();
+                // remove all inactive instances
+                this.instanceManager.removeAllInactive();
+
+                this.instanceManager.restartLevel();
+
+                currentTime = System.currentTimeMillis();
+                if (currentTime - previousTime > 3000) {
+                    currentTime = System.currentTimeMillis();
+                    previousTime = System.currentTimeMillis();
+
+                    this.gameState = GAME_STATE.NORMAL;
+                }
                 break;
             case END:
+                currentTime = System.currentTimeMillis();
+                if (currentTime - previousTime > 3000) {
+                    currentTime = System.currentTimeMillis();
+                    previousTime = System.currentTimeMillis();
+
+                    this.gameState = GAME_STATE.NORMAL;
+                    this.reinitialize();
+                }
                 break;
         }
     }
 
     public void renderEndScreen(Graphics g) {
         g.drawString("YOU LOSE :(", 100, 100);
+    }
+
+    // HELPER METHODS ------------------------------- //
+
+    public void reinitialize() {
+        this.lives = 3;
+        this.instanceManager.reinitialize();
     }
 
 

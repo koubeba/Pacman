@@ -63,4 +63,16 @@ public class InstanceManager {
             this.level = new Level(this.gameManager);
         }
     }
+
+    public void reinitialize() {
+        this.level = new Level(this.gameManager);
+    }
+
+    public boolean isPowerUp() {
+        return this.level.isPowerUp();
+    }
+
+    public void activatePowerUp() {
+        this.level.activatePowerUp();
+    }
 }

@@ -31,7 +31,11 @@ public class Level {
     // COLLECTABLES //
 
     private List<Collectible> dots;
+
+    private PowerUp powerUp;
     //TODO: add cherries
+
+    private int activeDots;
 
     // REFERENCES //
 
@@ -219,6 +223,8 @@ public class Level {
             dot.addCollector(this.player);
         }
 
+        this.activeDots = dots.size();
+
     }
 
     // METHODS --------------------- //
@@ -317,5 +323,19 @@ public class Level {
 
     public boolean getPlayerRestart() {
         return this.player.isRestart();
+    }
+
+    public boolean isPowerUp() {
+        if (this.powerUp != null) {
+            return this.powerUp.isActive() && this.powerUp.isPowerUpMode();
+        } else {
+            return false;
+        }
+    }
+
+    public void activatePowerUp() {
+
+        //TODO: Randomize position
+        this.powerUp = new PowerUp("Cherry", 0, 25, 20);
     }
 }

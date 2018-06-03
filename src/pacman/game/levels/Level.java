@@ -13,33 +13,29 @@ public class Level {
 
     // FIELDS -------------------- //
 
-        // WALLS //
+    // MAP //
 
-        //private List<SolidObject> walls;
+    private final GridMap gridMap;
 
-        // MAP //
+    // PLAYER //
 
-        private final GridMap gridMap;
+    private Player player;
 
-        // PLAYER //
+    // GHOSTS //
 
-        private Player player;
+    private Blinky blinky;
+    private Inky inky;
+    private Pinky pinky;
+    private Clyde clyde;
 
-        // GHOSTS //
+    // COLLECTABLES //
 
-        private Blinky blinky;
-        private Inky inky;
-        private Pinky pinky;
-        private Clyde clyde;
+    private List<Collectible> dots;
+    //TODO: add cherries
 
-        // COLLECTABLES //
+    // REFERENCES //
 
-        private List<Collectible> dots;
-        //TODO: add cherries
-
-        // REFERENCES //
-
-        private GameManager gameManager;
+    private GameManager gameManager;
 
     // CONSTRUCTOR -----------------//
 
@@ -75,10 +71,26 @@ public class Level {
         walls.add(new SolidObject("Wall", 100, 50));
         walls.add(new SolidObject("Wall", 100, 75));
 
+        dots.add(new Collectible("Dot", 25, 0, 1));
+        dots.add(new Collectible("Dot", 50, 0, 1));
+        dots.add(new Collectible("Dot", 75, 0, 1));
+        dots.add(new Collectible("Dot", 100, 0, 1));
+        dots.add(new Collectible("Dot", 125, 0, 1));
+        dots.add(new Collectible("Dot", 150, 0, 1));
+
+        dots.add(new Collectible("Dot", 125, 25, 1));
+        dots.add(new Collectible("Dot", 125, 50, 1));
+        dots.add(new Collectible("Dot", 125, 75, 1));
+
         walls.add(new SolidObject("Wall", 25, 75));
         walls.add(new SolidObject("Wall", 50, 75));
         walls.add(new SolidObject("Wall", 25, 100));
         walls.add(new SolidObject("Wall", 50, 100));
+
+        dots.add(new Collectible("Dot", 25, 50, 1));
+        dots.add(new Collectible("Dot", 50, 50, 1));
+        dots.add(new Collectible("Dot", 25, 125, 1));
+        dots.add(new Collectible("Dot", 50, 125, 1));
 
         walls.add(new SolidObject("Wall", 25, 150));
         walls.add(new SolidObject("Wall", 50, 150));
@@ -203,9 +215,9 @@ public class Level {
 
         // ADD DOTS //
 
-        Collectible dot = new Collectible("Dot", 10, 20, 1);
-        dot.addCollector(this.player);
-        this.dots.add(dot);
+        for (Collectible dot : dots) {
+            dot.addCollector(this.player);
+        }
 
     }
 
@@ -218,22 +230,22 @@ public class Level {
 
         //TODO: add wall collision checking
 
-            // CHECK COLLISIONS WITH COLLECTIBLES //
+        // CHECK COLLISIONS WITH COLLECTIBLES //
 
-            for (Collectible dot : dots) {
-                this.player.checkCollectibleCollision(dot);
-            }
+        for (Collectible dot : dots) {
+            this.player.checkCollectibleCollision(dot);
+        }
 
-            // CHECK COLLISIONS WITH GHOSTS //
+        // CHECK COLLISIONS WITH GHOSTS //
 
-            this.player.checkGhostCollision(this.blinky, this.gameManager.getGameState());
-            this.player.checkGhostCollision(this.inky, this.gameManager.getGameState());
-            this.player.checkGhostCollision(this.pinky, this.gameManager.getGameState());
-            this.player.checkGhostCollision(this.clyde, this.gameManager.getGameState());
+        this.player.checkGhostCollision(this.blinky, this.gameManager.getGameState());
+        this.player.checkGhostCollision(this.inky, this.gameManager.getGameState());
+        this.player.checkGhostCollision(this.pinky, this.gameManager.getGameState());
+        this.player.checkGhostCollision(this.clyde, this.gameManager.getGameState());
 
-            // CHECK COLLISIONS WITH WALLS //
+        // CHECK COLLISIONS WITH WALLS //
 
-            this.player.resetCollisionFlags();
+        this.player.resetCollisionFlags();
 
             /*
             for (SolidObject wall: walls) {
@@ -246,7 +258,7 @@ public class Level {
         // RENDER WALLS //
 
 
-        for (SolidObject wall: this.gridMap.getWalls()) {
+        for (SolidObject wall : this.gridMap.getWalls()) {
             wall.render(g);
         }
 
@@ -263,7 +275,7 @@ public class Level {
 
         // RENDER COLLECTIBLES //
 
-        for (Collectible dot: dots) {
+        for (Collectible dot : dots) {
             if (dot.isActive()) dot.render(g);
         }
 
@@ -301,4 +313,9 @@ public class Level {
         */
     }
 
+    // GETTERS AND SETTERS -------------------- //
+
+    public boolean getPlayerRestart() {
+        return this.player.isRestart();
+    }
 }

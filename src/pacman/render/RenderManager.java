@@ -146,8 +146,16 @@ public class RenderManager extends JFrame implements Runnable {
     private void render(Graphics graphics) {
 
         // draw all instances
+        switch (this.gameManager.getGameState()) {
+            case NORMAL:
+            case POWERUP:
+                renderInstances(instanceManager, graphics);
+                break;
+            case END:
+                gameManager.renderEndScreen(graphics);
+                break;
+        }
 
-        renderInstances(instanceManager, graphics);
     }
 
     public void onWindowClosing() {

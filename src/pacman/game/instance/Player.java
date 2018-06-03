@@ -8,7 +8,7 @@ public final class Player extends Collector implements Damageable {
 
     // FIELDS ----------------------------------------- //
 
-    private final GameManager gameManager;
+    private boolean restart = false;
 
     private boolean upCollision, downCollision, rightCollision, leftCollision;
 
@@ -22,8 +22,6 @@ public final class Player extends Collector implements Damageable {
 
     public Player(String name, int x_position, int y_position, int speed, GameManager gameManager) {
         super(name, x_position, y_position, speed);
-
-        this.gameManager = gameManager;
 
         this.resetCollisionFlags();
     }
@@ -68,7 +66,7 @@ public final class Player extends Collector implements Damageable {
     @Override
     public void die() {
         super.die();
-        gameManager.setGameState(GAME_STATE.END);
+        this.restart = true;
     }
 
     // GETTERS AND SETTERS ------------------------- //
@@ -78,5 +76,9 @@ public final class Player extends Collector implements Damageable {
         this.downCollision = false;
         this.rightCollision = false;
         this.leftCollision = false;
+    }
+
+    public boolean isRestart() {
+        return restart;
     }
 }

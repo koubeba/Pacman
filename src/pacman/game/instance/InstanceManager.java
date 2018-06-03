@@ -10,6 +10,7 @@ package pacman.game.instance;
  */
 
 
+import pacman.game.GAME_STATE;
 import pacman.game.GameManager;
 import pacman.game.levels.Level;
 
@@ -54,5 +55,12 @@ public class InstanceManager {
 
     public void removeAllInactive() {
         level.removeAllInactive();
+    }
+
+    public void restartLevel() {
+        if (this.level.getPlayerRestart()) {
+            this.gameManager.decLives();
+            this.level = new Level(this.gameManager);
+        }
     }
 }

@@ -4,6 +4,7 @@ import pacman.game.instance.InstanceManager;
 import pacman.input.InputManager;
 import pacman.render.RenderManager;
 
+import java.awt.*;
 import java.awt.event.KeyListener;
 
 public class GameManager {
@@ -13,6 +14,8 @@ public class GameManager {
     private final InstanceManager instanceManager;
     private final InputManager inputManager;
     private final RenderManager renderManager;
+
+    private int lives = 3;
 
     // THREAD //
     private volatile boolean running;
@@ -38,14 +41,24 @@ public class GameManager {
         switch(gameState) {
             case NORMAL:
             case POWERUP:
-            case END:
                 //check all collisions
                 this.instanceManager.checkAllCollisions();
-
                 // remove all inactive instances
                 this.instanceManager.removeAllInactive();
+
+                this.instanceManager.restartLevel();
+
+                if (this.lives == 0) {
+                    this.gameState = GAME_STATE.END;
+                }
+                break;
+            case END:
                 break;
         }
+    }
+
+    public void renderEndScreen(Graphics g) {
+        g.drawString("YOU LOSE :(", 100, 100);
     }
 
 
@@ -75,4 +88,14 @@ public class GameManager {
     public void setGameState(GAME_STATE gameState) {
         this.gameState = gameState;
     }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public void decLives() {
+        this.lives--;
+    }
+
+
 }

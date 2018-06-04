@@ -44,11 +44,13 @@ public final class RenderManager extends JFrame implements Runnable {
 
     // METHODS ----------------------- //
 
-    public void create(InstanceManager instanceManager, GameManager gameManager) {
+    public void create(GameManager gameManager) {
 
         // MANAGER INITIALIZATION //
-        this.instanceManager = instanceManager;
+
         this.gameManager = gameManager;
+
+        this.instanceManager = this.gameManager.getInstanceManager();
 
         // CANVAS INITIALIZATION //
 

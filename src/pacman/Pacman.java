@@ -29,7 +29,7 @@ public class Pacman {
             @Override
             public void run() {
                 pacman.gameManager.getInputManager().create();
-                pacman.gameManager.getRenderManager().create(pacman.gameManager.getInstanceManager(), pacman.gameManager);
+                pacman.gameManager.getRenderManager().create(pacman.gameManager);
             }
         });
     }

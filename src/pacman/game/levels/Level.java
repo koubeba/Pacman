@@ -269,7 +269,11 @@ public class Level {
 
         // RENDER SCORE //
 
-        g.drawString(String.valueOf(this.player.getPoints()), 10, 10);
+        g.setColor(Color.BLUE);
+
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+
+        g.drawString(String.valueOf(this.player.getPoints()), 10, 20);
 
 
         // RENDER WALLS //

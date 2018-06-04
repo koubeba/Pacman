@@ -45,16 +45,16 @@ public class InputManager implements Runnable {
         while (running) {
             curTime = System.nanoTime();
             nsPerSeconds = curTime - lastTime;
-            this.loop(nsPerSeconds / 1.0E9);
+            this.loop();
             lastTime = curTime;
         }
     }
 
-    private void loop(double delta) {
+    private void loop() {
 
         keyboardInput.poll();
 
-        instanceManager.moveAll(delta);
+        instanceManager.moveAll();
 
         if (keyboardInput.keyDown(KeyEvent.VK_D)) {
             instanceManager.receiveInput(MOVEMENT_INPUT.RIGHT);

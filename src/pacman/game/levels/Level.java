@@ -1,6 +1,7 @@
 package pacman.game.levels;
 
 import pacman.Vector2;
+import pacman.game.GAME_STATE;
 import pacman.game.GameManager;
 import pacman.game.instance.*;
 import pacman.game.instance.GridMap.GridMap;
@@ -300,18 +301,18 @@ public class Level {
 
     }
 
-    public void moveAll(double delta) {
+    public void moveAll() {
 
         // MOVE THE PLAYER //
 
-        this.player.move(delta);
+        this.player.move(this.gameManager.getGameState());
 
         // MOVE THE GHOSTS //
 
-        if (this.blinky.isActive()) this.blinky.move(delta);
-        if (this.inky.isActive()) this.inky.move(delta);
-        if (this.pinky.isActive()) this.pinky.move(delta);
-        if (this.clyde.isActive()) this.clyde.move(delta);
+        if (this.blinky.isActive()) this.blinky.move(this.gameManager.getGameState());
+        if (this.inky.isActive()) this.inky.move(this.gameManager.getGameState());
+        if (this.pinky.isActive()) this.pinky.move(this.gameManager.getGameState());
+        if (this.clyde.isActive()) this.clyde.move(this.gameManager.getGameState());
     }
 
     public void receiveInput(MOVEMENT_INPUT input) {

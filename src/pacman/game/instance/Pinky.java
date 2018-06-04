@@ -1,6 +1,7 @@
 package pacman.game.instance;
 
 import pacman.Vector2;
+import pacman.game.GAME_STATE;
 
 public final class Pinky extends Ghost {
 
@@ -15,9 +16,21 @@ public final class Pinky extends Ghost {
     // Pinky tries to ambush Pacman, so it aims for 1 block ahead //
 
     @Override
-    public void move(double delta) {
-        this.switchDirection();
-        super.move(delta);
+    public void move(GAME_STATE game_state) {
+
+        switch (game_state) {
+            case NORMAL:
+                this.switchDirection();
+                break;
+            case POWERUP:
+                this.runAway();
+                break;
+            default:
+                this.switchDirection();
+                break;
+        }
+
+        super.move(game_state);
     }
 
     private void switchDirection() {

@@ -1,6 +1,7 @@
 package pacman.game.instance;
 
 import pacman.Vector2;
+import pacman.game.GAME_STATE;
 
 import java.util.Random;
 
@@ -15,9 +16,9 @@ public final class Inky extends Ghost {
     // METHODS ------------------------- //
 
     @Override
-    public void move(double delta) {
+    public void move(GAME_STATE game_state) {
         this.switchDirection();
-        super.move(delta);
+        super.move(game_state);
     }
 
     private void switchDirection() {

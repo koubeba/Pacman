@@ -2,6 +2,7 @@ package pacman.game.instance;
 
 import pacman.Pacman;
 import pacman.Vector2;
+import pacman.game.GAME_STATE;
 import pacman.game.instance.GridMap.GridMap;
 import pacman.render.graphics.MovableSpriteGraphic;
 
@@ -33,7 +34,7 @@ public class Movable extends SolidObject implements pacman.game.instance.interfa
         this.spriteGraphic.animate();
     }
 
-    public void move(double delta) {
+    public void move(GAME_STATE game_state) {
 
         Vector2 playerVector = new Vector2(this.x_position, this.y_position);
 

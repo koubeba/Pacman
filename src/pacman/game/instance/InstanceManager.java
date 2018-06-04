@@ -45,8 +45,8 @@ public final class InstanceManager {
         level.renderAll(g);
     }
 
-    public void moveAll(double delta) {
-        level.moveAll(delta);
+    public void moveAll() {
+        level.moveAll();
     }
 
     public void receiveInput(MOVEMENT_INPUT input) {

@@ -10,7 +10,7 @@ public class FileManager {
 
     // CONSTANTS --------------------------- //
 
-    private final static String IMG_FILES_PATH = "C:\\Users\\majaj\\OneDrive\\Desktop\\Pacman\\src\\pacman\\file\\";
+    private final static String IMG_FILES_PATH = "/home/maja/Pulpit/pacman-grid/src/pacman/file/";
     private final static String IMG_FORMAT = "png";
 
     // METHODS -------------------- //

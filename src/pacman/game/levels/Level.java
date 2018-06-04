@@ -253,10 +253,6 @@ public class Level {
         this.player.checkGhostCollision(this.inky, this.gameManager.getGameState());
         this.player.checkGhostCollision(this.pinky, this.gameManager.getGameState());
         this.player.checkGhostCollision(this.clyde, this.gameManager.getGameState());
-
-        // CHECK COLLISIONS WITH WALLS //
-
-        this.player.resetCollisionFlags();
     }
 
     public void renderAll(Graphics g) {

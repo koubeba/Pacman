@@ -10,8 +10,6 @@ public final class Player extends Collector implements Damageable {
 
     private boolean restart = false;
 
-    private boolean upCollision, downCollision, rightCollision, leftCollision;
-
     private MOVEMENT_INPUT nextDirection;
 
     // CONSTS ----------------------------------------- //
@@ -22,16 +20,9 @@ public final class Player extends Collector implements Damageable {
 
     public Player(String name, int x_position, int y_position, int speed) {
         super(name, x_position, y_position, speed);
-
-        this.resetCollisionFlags();
     }
 
     // METHODS ---------------------------------------- //
-
-    // TODO: write better wall collision... check all sides etc
-    public void checkWallCollision(SolidObject collider) {
-
-    }
 
     public void checkCollectibleCollision(Collectible collectible) {
         if (intersects(collectible)) {
@@ -72,13 +63,6 @@ public final class Player extends Collector implements Damageable {
     }
 
     // GETTERS AND SETTERS ------------------------- //
-
-    public void resetCollisionFlags() {
-        this.upCollision = false;
-        this.downCollision = false;
-        this.rightCollision = false;
-        this.leftCollision = false;
-    }
 
     public boolean isRestart() {
         return restart;

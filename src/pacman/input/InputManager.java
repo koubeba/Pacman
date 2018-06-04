@@ -21,7 +21,6 @@ public class InputManager implements Runnable {
 
     private long curTime = System.nanoTime();
     private long lastTime = curTime;
-    private double nsPerSeconds;
 
     // CONSTRUCTORS ------------------------------------- //
 
@@ -43,10 +42,7 @@ public class InputManager implements Runnable {
     public void run() {
         this.running = true;
         while (running) {
-            curTime = System.nanoTime();
-            nsPerSeconds = curTime - lastTime;
             this.loop();
-            lastTime = curTime;
         }
     }
 

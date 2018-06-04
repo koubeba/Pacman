@@ -38,8 +38,6 @@ public class Animation {
 
     public void changeState(String name) {
         this.currentState = name;
-
-        // TODO: add exception when given name is not in the states
     }
 
     public Image getCurrentImage() {

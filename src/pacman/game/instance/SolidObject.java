@@ -11,8 +11,6 @@ public class SolidObject implements pacman.game.instance.interfaces.SolidObject 
     public final String name;
 
     protected boolean active = true;
-
-    // TODO: change it in a vector?
     protected int x_position, y_position;
 
     // CONSTANTS ------------------ //

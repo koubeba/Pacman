@@ -15,7 +15,6 @@ public class SpriteGraphic {
     protected FileManager fileManager;
     protected String name;
 
-    // TODO: make a Vector class?
     protected int x_position;
     protected int y_position;
 

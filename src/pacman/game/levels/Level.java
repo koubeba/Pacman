@@ -34,7 +34,6 @@ public class Level {
     private List<Collectible> dots;
 
     private PowerUp powerUp;
-    //TODO: add cherries
 
     private int activeDots;
 
@@ -44,7 +43,6 @@ public class Level {
 
     // CONSTRUCTOR -----------------//
 
-    //TODO: add some sort of prefabs
     public Level(GameManager gameManager) {
 
         // SAVE REFERENCE //
@@ -231,11 +229,6 @@ public class Level {
     // METHODS --------------------- //
 
     public void checkAllCollisions() {
-        // Check collisions between players and stuff.
-
-        // CHECK PLAYER COLLISION //
-
-        //TODO: add wall collision checking
 
         // CHECK COLLISIONS WITH COLLECTIBLES //
 
@@ -336,7 +329,6 @@ public class Level {
 
     public void activatePowerUp() {
 
-        //TODO: Randomize position
         this.powerUp = new PowerUp("Cherry", 0, 25, 20);
         this.powerUp.addCollector(this.player);
     }

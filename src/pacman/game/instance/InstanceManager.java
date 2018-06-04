@@ -24,10 +24,6 @@ public final class InstanceManager {
 
     private final GameManager gameManager;
 
-    // TODO: add player
-
-    // TODO: zrobić tu porządek!!!
-
     // CONSTRUCTORS ----------------- //
 
     public InstanceManager(GameManager gameManager) {
@@ -51,10 +47,6 @@ public final class InstanceManager {
 
     public void receiveInput(MOVEMENT_INPUT input) {
         level.receiveInput(input);
-    }
-
-    public void removeAllInactive() {
-        level.removeAllInactive();
     }
 
     public void restartLevel() {

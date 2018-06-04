@@ -7,9 +7,6 @@ import javax.swing.*;
 
 import pacman.game.GameManager;
 import pacman.game.instance.InstanceManager;
-import pacman.utils.*;
-
-import static java.lang.Thread.sleep;
 
 /**
  *  The actual rendering will take place in the render manager.

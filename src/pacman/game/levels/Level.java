@@ -257,12 +257,6 @@ public class Level {
         // CHECK COLLISIONS WITH WALLS //
 
         this.player.resetCollisionFlags();
-
-            /*
-            for (SolidObject wall: walls) {
-                this.player.checkWallCollision(wall);
-            }
-            */
     }
 
     public void renderAll(Graphics g) {
@@ -323,19 +317,6 @@ public class Level {
         this.player.switchDirection(input);
     }
 
-    public void removeAllInactive() {
-
-        // TODO: fix
-
-        /*
-        // REMOVE THE INACTIVE DOTS //
-        for (Collectible dot : dots) {
-            if (!dot.isActive()) {
-                dots.remove(dot);
-            }
-        }
-        */
-    }
 
     // GETTERS AND SETTERS -------------------- //
 

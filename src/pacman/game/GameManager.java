@@ -45,8 +45,6 @@ public final class GameManager {
             case NORMAL:
                 //check all collisions
                 this.instanceManager.checkAllCollisions();
-                // remove all inactive instances
-                this.instanceManager.removeAllInactive();
 
                 this.instanceManager.restartLevel();
 
@@ -71,8 +69,6 @@ public final class GameManager {
                 break;
             case POWERUP:
                 this.instanceManager.checkAllCollisions();
-                // remove all inactive instances
-                this.instanceManager.removeAllInactive();
 
                 this.instanceManager.restartLevel();
 
@@ -98,7 +94,11 @@ public final class GameManager {
     }
 
     public void renderEndScreen(Graphics g) {
-        g.drawString("YOU LOSE :(", 100, 100);
+        g.setColor(Color.RED);
+
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+
+        g.drawString("YOU LOSE", 100, 100);
     }
 
     // HELPER METHODS ------------------------------- //

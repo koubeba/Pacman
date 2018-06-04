@@ -9,13 +9,9 @@ import java.awt.event.WindowEvent;
 
 public class Pacman {
 
-    //private RenderManager renderFrame;
-
     private final GameManager gameManager;
 
     public Pacman() {
-
-        //renderFrame = new RenderManager();
 
         this.gameManager = new GameManager();
     }

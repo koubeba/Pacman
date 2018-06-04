@@ -19,9 +19,6 @@ public class InputManager implements Runnable {
 
     private InstanceManager instanceManager;
 
-    private long curTime = System.nanoTime();
-    private long lastTime = curTime;
-
     // CONSTRUCTORS ------------------------------------- //
 
     public InputManager(InstanceManager instanceManager) {
@@ -67,5 +64,17 @@ public class InputManager implements Runnable {
         try {
             Thread.sleep( 10 );
         } catch( InterruptedException ex ) { }
+    }
+
+    public void stop() {
+            System.err.println("Stopping Input Thread...");
+            running = false;
+            try {
+                this.thread.join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            System.err.println("Stopped");
     }
 }

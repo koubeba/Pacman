@@ -158,6 +158,8 @@ public final class RenderManager extends JFrame implements Runnable {
     }
 
     public void onWindowClosing() {
+        this.gameManager.getInputManager().stop();
+
         try {
 
             System.err.println("Stopping Rendering Thread...");
@@ -173,10 +175,10 @@ public final class RenderManager extends JFrame implements Runnable {
             // handle the exception
         }
 
+
+
         System.exit(0);
     }
-
-    //todo: is that necessary?
 
     public void initRun() {
 
@@ -184,7 +186,7 @@ public final class RenderManager extends JFrame implements Runnable {
 
             @Override
             public void windowClosing(WindowEvent windowEvent) {
-                super.windowClosing(windowEvent);
+                onWindowClosing();
             }
         });
     }
